@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GigaCowork — платформа ИИ-агентов для бизнеса</title>
+<meta name="description" content="Создавайте ИИ-агентов для всей компании, подключайте корпоративные системы, автоматизируйте процессы. Разворачивайте в облаке или на своих серверах.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/product.css">
+<link rel="stylesheet" href="../css/inner-pages.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header>
+<nav class="topbar">
+
+  <a class="logo" href="../index.html">
+    <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
+  </a>
+
+  <ul class="nav-links">
+
+    <!-- ── ПРОДУКТ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Продукт
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown product-drop">
+
+        <!-- Левая панель: hero + быстрые ссылки -->
+        <div class="drop-panel-left">
+          <a class="drop-hero" href="gigacowork.html">
+            <div class="drop-hero-logo"><img src="../Кнопка GigaCowork.png" alt="GigaCowork"></div>
+            <p>Корпоративная AI-платформа. Делегируйте задачи агентам, автоматизируйте процессы, работайте с данными внутри своего контура.</p>
+            <span class="drop-hero-link">Обзор платформы →</span>
+          </a>
+          <a class="drop-link" href="chto-novogo.html"><span class="dot"></span>Что нового</a>
+          <a class="drop-link"><span class="dot"></span>Документация</a>
+        </div>
+
+        <!-- Правая панель: возможности + GigaChat API -->
+        <div class="drop-panel-right">
+          <span class="drop-section-title">Возможности GigaCowork</span>
+          <a class="drop-item" href="prostranstva.html">
+            <div class="drop-icon di-b">🗂️</div>
+            <div class="drop-text"><strong>Рабочие пространства</strong><span>Совместная работа команды в едином AI-окружении</span></div>
+          </a>
+          <a class="drop-item" href="agenty.html">
+            <div class="drop-icon di-g">🤖</div>
+            <div class="drop-text"><strong>ИИ-агенты</strong><span>Работают автономно, решают задачи без участия человека</span></div>
+          </a>
+          <a class="drop-item" href="navyki.html">
+            <div class="drop-icon di-o">⚡</div>
+            <div class="drop-text"><strong>Навыки агентов</strong><span>Готовые и кастомные сценарии поведения агентов</span></div>
+          </a>
+          <a class="drop-item" href="komandy.html">
+            <div class="drop-icon di-g">⌨️</div>
+            <div class="drop-text"><strong>Быстрые команды</strong><span>Сохранённые запросы, которые вызываются через /</span></div>
+          </a>
+          <a class="drop-item" href="integracii.html">
+            <div class="drop-icon di-b">🔌</div>
+            <div class="drop-text"><strong>Интеграции (MCP-коннекторы)</strong><span>Подключение к ERP, CRM, BI и внутренним системам</span></div>
+          </a>
+          <a class="drop-item" href="raspisanie.html">
+            <div class="drop-icon di-p">🕐</div>
+            <div class="drop-text"><strong>Запуск по расписанию</strong><span>Автоматический запуск агентов в нужное время</span></div>
+          </a>
+
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── СЦЕНАРИИ ──────────────────── -->
+    <li>
+      <button class="nav-btn">Сценарии
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown tasks-drop">
+
+        <div class="tasks-scenarios">
+          <a class="drop-item" href="dokumenty.html">
+            <div class="drop-icon di-b">📄</div>
+            <div class="drop-text"><strong>Работа с документами</strong><span>Договор проверен за 2 мин вместо 40</span></div>
+          </a>
+          <a class="drop-item" href="analitika.html">
+            <div class="drop-icon di-o">📊</div>
+            <div class="drop-text"><strong>Аналитика и отчётность</strong><span>Еженедельный отчёт без ручной выгрузки</span></div>
+          </a>
+          <a class="drop-item" href="baza-znanii.html">
+            <div class="drop-icon di-g">🧠</div>
+            <div class="drop-text"><strong>Корпоративная база знаний</strong><span>Сотрудник спрашивает — агент отвечает по вашим регламентам</span></div>
+          </a>
+          <a class="drop-item" href="klientskiy-servis.html">
+            <div class="drop-icon di-g">🎧</div>
+            <div class="drop-text"><strong>Клиентский сервис</strong><span>40–60% обращений закрываются без оператора</span></div>
+          </a>
+          <a class="drop-item" href="hr.html">
+            <div class="drop-icon di-p">👥</div>
+            <div class="drop-text"><strong>HR и кадровые процессы</strong><span>−93% времени на поиск кандидатов</span></div>
+          </a>
+          <a class="drop-item" href="finansy.html">
+            <div class="drop-icon di-r">💰</div>
+            <div class="drop-text"><strong>Финансы и контроль</strong><span>Закрытие периода без ручных сверок</span></div>
+          </a>
+          <a class="drop-item" href="yuridicheskie.html">
+            <div class="drop-icon di-b">⚖️</div>
+            <div class="drop-text"><strong>Юридические задачи</strong><span>Юрист видит поток готовых задач, а не входящих писем</span></div>
+          </a>
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── ИНТЕГРАЦИЯ ───────────── -->
+    <li>
+      <button class="nav-btn">Поставки
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown deploy-drop">
+
+        <!-- Обзор — полная ширина -->
+        <div class="deploy-overview">
+          <div class="deploy-overview-left">
+            <strong>Подберём вариант, подходящий под требования вашей инфраструктуры и безопасности</strong>
+          </div>
+          <div class="deploy-overview-links">
+            <a class="deploy-ov-link" href="sravnenie.html">Сравнить</a>
+            <a class="deploy-ov-link primary">Оставить заявку →</a>
+          </div>
+        </div>
+
+        <a class="deploy-col" href="oblako.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-g">☁️</div>
+            <div>
+              <div class="dch-name">Облако</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Запуск без инфраструктурных затрат и настройки серверов</li>
+            <li>Защищённая облачная инфраструктура — ЦОД на территории РФ</li>
+            <li>Оптимально для быстрого старта</li>
+            <li><strong>Для команд от 100 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="gibrid.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-o">🔀</div>
+            <div>
+              <div class="dch-name">Гибрид</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Данные хранятся на ваших серверах — модель в облаке</li>
+            <li>Легко масштабируется на большие команды</li>
+            <li>Оптимальная стоимость владения при росте числа пользователей</li>
+            <li><strong>Для команд от 500 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pak.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-b">🖥️</div>
+            <div>
+              <div class="dch-name">ПАК</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Сервер в вашем контуре с предустановленным ПО и моделями</li>
+            <li>Возможна полная изоляция сети</li>
+            <li>Конфигурация софта и оборудования по запросу</li>
+            <li><strong>Безлимитное количество пользователей</strong></li>
+          </ul>
+        </a>
+
+      </div>
+    </li>
+
+    <!-- ── БЕЗОПАСНОСТЬ ───────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='bezopasnost.html'">Безопасность</button>
+    </li>
+
+    <!-- ── КЕЙСЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='keysy.html'">Кейсы</button>
+    </li>
+
+    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Материалы
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown resources-drop">
+        <div class="res-col">
+          <a class="drop-item" href="blog.html">
+            <div class="drop-icon di-p">✍️</div>
+            <div class="drop-text"><strong>Блог</strong><span>Обзоры, экспертные статьи</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-b">📖</div>
+            <div class="drop-text"><strong>Документация</strong><span>Руководства, API, интеграции</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-o">🎓</div>
+            <div class="drop-text"><strong>Курсы и академия</strong><span>Обучение команды работе с AI</span></div>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <!-- ── О НАС ─────────────────── -->
+    <li>
+      <button class="nav-btn">О компании
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown oneus-drop">
+        <div class="res-col" style="background: var(--surface);">
+          <a class="drop-link" href="o-nas.html"><span class="dot"></span>О компании</a>
+          <a class="drop-link"><span class="dot"></span>Новости</a>
+          <a class="drop-link" href="karera.html"><span class="dot"></span>Карьера</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-ghost">Связаться</button>
+    <button class="btn-primary">Попробовать</button>
+  </div>
+
+</nav>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">gigaenterprise.ai</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">Продукт</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">GigaCowork</span>
+  </div>
+</div>
+
+<main>
+
+<!-- PRODUCT HERO -->
+<section class="product-hero">
+  <div class="product-hero-inner">
+    <div>
+      <h1 class="ph-h1">Платформа ИИ-агентов<br>для всей компании</h1>
+      <p class="ph-sub">Создавайте агентов, подключайте корпоративные системы и базы знаний, автоматизируйте процессы и масштабируйте экспертизу сотрудников. Автоматизируйте то, на что раньше не хватало людей.</p>
+      <div class="ph-cta">
+        <button class="btn-hero-primary">Попробовать</button>
+        <button class="btn-hero-ghost">Смотреть демо</button>
+      </div>
+    </div>
+    <div class="ph-visual">
+      <img src="../assets/images/hero_img.png" alt="GigaCowork платформа" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">80%</div>
+      <div class="stat-label">скорости обработки документов</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">81,5%</div>
+      <div class="stat-label">экономии времени сотрудника</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">83%</div>
+      <div class="stat-label">оптимизация рабочего времени</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">70%</div>
+      <div class="stat-label">сокращение времени на отчетность</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">93%</div>
+      <div class="stat-label">сокращение времени на поиск кандидатов</div>
+    </div>
+  </div>
+  <p class="stat-note">* Данные основаны на кейсах клиентов ГигаЧат Бизнес</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-overline">Как это работает</span>
+      <h2 class="section-h2">От задачи до готового результата</h2>
+      <p class="section-sub">Агент работает как опытный коллега: понимает задачу, подключает нужные инструменты и возвращает результат в заданном формате</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Напишите задачу обычными словами</div>
+        <div class="step-desc">Пишите как коллеге: что сделать, в каком формате и для кого.</div>
+        <div class="step-tags">
+          <span class="step-tag">Текст</span>
+          <span class="step-tag">Голос</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Агент подключает инструменты</div>
+        <div class="step-desc">Встроенные навыки позволяют агенту работать с документами, таблицами, письмами и расшифровками встреч.</div>
+        <div class="step-tags">
+          <span class="step-tag">Документы</span>
+          <span class="step-tag">Таблицы</span>
+          <span class="step-tag">Почта</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Запрашивает нужные данные</div>
+        <div class="step-desc">Агент работает с данными там, где они хранятся. Обращается к корпоративным системам напрямую. Ничего не нужно переносить вручную.</div>
+        <div class="step-tags">
+          <span class="step-tag">MCP</span>
+          <span class="step-tag">1С</span>
+          <span class="step-tag">CRM</span>
+          <span class="step-tag">ERP</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Разбивает сложные задачи на шаги</div>
+        <div class="step-desc">Для многошаговых задач агент строит план сам. При необходимости подключает других агентов. Запуск: вручную, по расписанию или по событию.</div>
+        <div class="step-tags">
+          <span class="step-tag">Планирование</span>
+          <span class="step-tag">Мультиагентность</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">05</div>
+        <div class="step-title">Примите готовый результат</div>
+        <div class="step-desc">Получите и проверьте готовый документ, обновление данных или ответ клиенту в том формате, который вы задали.</div>
+        <div class="step-tags">
+          <span class="step-tag">Документ</span>
+          <span class="step-tag">Таблица</span>
+          <span class="step-tag">Данные в системе</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSPACES -->
+<section class="workspaces-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-overline">Рабочие пространства</span>
+      <h2 class="section-h2">Один поток задач<br>для команды и агентов</h2>
+      <p class="section-sub">Сотрудники работают в общих пространствах с агентами, документами и политиками доступа</p>
+    </div>
+    <div class="workspaces-grid">
+      <div class="ws-card">
+        <div class="ws-icon di-b">👥</div>
+        <div class="ws-title">Общий контекст</div>
+        <div class="ws-desc">Команда работает с общими агентами и документами. Результаты работы агентов сохраняются в общий контекст пространства — агенты становятся точнее с каждой выполненной задачей.</div>
+        <div class="ws-chips">
+          <span class="ws-chip">Общие агенты</span>
+          <span class="ws-chip">Общие документы</span>
+          <span class="ws-chip">Общие сессии</span>
+        </div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-icon di-g">🔒</div>
+        <div class="ws-title">Личная работа</div>
+        <div class="ws-desc">Пространство только для вас. Агенты, документы и сессии доступны только вам. Подходит для персональных задач и тонкой настройки агентов под свои нужды.</div>
+        <div class="ws-chips">
+          <span class="ws-chip">Персональные агенты</span>
+          <span class="ws-chip">Приватные сессии</span>
+        </div>
+      </div>
+    </div>
+    <div class="ws-benefits">
+      <div>
+        <div class="ws-benefit-title">Прозрачность</div>
+        <div class="ws-benefit-desc">Каждый участник видит, что сделал агент, и берет результат на проверку</div>
+      </div>
+      <div>
+        <div class="ws-benefit-title">Скорость</div>
+        <div class="ws-benefit-desc">Ручные операции превращаются в автоматизированный конвейер. Команда проверяет и подтверждает готовый результат</div>
+      </div>
+      <div>
+        <div class="ws-benefit-title">Масштабируемость</div>
+        <div class="ws-benefit-desc">Тот же состав команды обрабатывает в 10 раз больше задач. Агенты берут объем, команда контролирует качество</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:40px;">
+      <span class="section-overline">Возможности платформы</span>
+      <h2>Всё для работы агентов<br>на уровне всей компании</h2>
+    </div>
+    <div class="scenario-wide-list">
+
+      <div class="scenario-wide-card">
+        <div class="scenario-wide-content">
+          <div class="swc-head"><span class="swc-icon">🤖</span><strong>Готовые агенты</strong></div>
+          <p>Выберите агента из каталога или создайте своего без разработки и кода. Каждого агента можно настроить под бизнес-процессы, политику согласования и уровни доступа.</p>
+          <div class="sc-example"><span class="sc-ex-label">Пример</span><em>Каталог агентов, no-code настройка, интеграция с корпоративными политиками доступа</em></div>
+        </div>
+        <div class="scenario-wide-media"><div class="video-placeholder"><div class="video-placeholder-inner" style="background:var(--surface-2,#f5f5f7);border-radius:12px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(0,0,0,0.06)"/><rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/><circle cx="14" cy="18" r="2" fill="var(--accent)" opacity=".5"/><path d="M8 24l8-5 6 4 5-3 5 4" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/></svg><span style="color:var(--text-secondary);font-size:13px;">Скриншот интерфейса</span></div></div></div>
+      </div>
+
+      <div class="scenario-wide-card reverse">
+        <div class="scenario-wide-content">
+          <div class="swc-head"><span class="swc-icon">⚡</span><strong>Навыки</strong></div>
+          <p>Навык задаёт агенту правила работы для конкретной задачи: как работать с файлами, составлять отчёты или обрабатывать входящие письма. Навыки — общие или встроенные в агента.</p>
+          <div class="sc-example"><span class="sc-ex-label">Пример</span><em>Навыки компании и пространства, встроенные в агента или вызываемые как команда</em></div>
+        </div>
+        <div class="scenario-wide-media"><div class="video-placeholder"><div class="video-placeholder-inner" style="background:var(--surface-2,#f5f5f7);border-radius:12px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(0,0,0,0.06)"/><rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/><circle cx="14" cy="18" r="2" fill="var(--accent)" opacity=".5"/><path d="M8 24l8-5 6 4 5-3 5 4" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/></svg><span style="color:var(--text-secondary);font-size:13px;">Скриншот интерфейса</span></div></div></div>
+      </div>
+
+      <div class="scenario-wide-card">
+        <div class="scenario-wide-content">
+          <div class="swc-head"><span class="swc-icon">⌨️</span><strong>Быстрые команды</strong></div>
+          <p>Сохраните часто повторяемый запрос как команду и вызывайте его через / в одно касание. В команде можно прописать коннектор, формат ответа и любые повторяющиеся инструкции.</p>
+          <div class="sc-example"><span class="sc-ex-label">Пример</span><em>Вызов через / в чате, шаблоны с коннекторами и форматом ответа</em></div>
+        </div>
+        <div class="scenario-wide-media"><div class="video-placeholder"><div class="video-placeholder-inner" style="background:var(--surface-2,#f5f5f7);border-radius:12px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(0,0,0,0.06)"/><rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/><circle cx="14" cy="18" r="2" fill="var(--accent)" opacity=".5"/><path d="M8 24l8-5 6 4 5-3 5 4" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/></svg><span style="color:var(--text-secondary);font-size:13px;">Скриншот интерфейса</span></div></div></div>
+      </div>
+
+      <div class="scenario-wide-card reverse">
+        <div class="scenario-wide-content">
+          <div class="swc-head"><span class="swc-icon">🔌</span><strong>Коннекторы</strong></div>
+          <p>Агент получает доступ к Почте, 1С, CRM, ERP и другим системам через MCP-коннекторы. Действия в системах выполняются под контролем сотрудников, все операции логируются.</p>
+          <div class="sc-example"><span class="sc-ex-label">Пример</span><em>Подключение к 1С, amoCRM, Битрикс24, Google Drive, почте и 12 другим системам</em></div>
+        </div>
+        <div class="scenario-wide-media"><div class="video-placeholder"><div class="video-placeholder-inner" style="background:var(--surface-2,#f5f5f7);border-radius:12px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(0,0,0,0.06)"/><rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/><circle cx="14" cy="18" r="2" fill="var(--accent)" opacity=".5"/><path d="M8 24l8-5 6 4 5-3 5 4" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/></svg><span style="color:var(--text-secondary);font-size:13px;">Скриншот интерфейса</span></div></div></div>
+      </div>
+
+      <div class="scenario-wide-card">
+        <div class="scenario-wide-content">
+          <div class="swc-head"><span class="swc-icon">🕐</span><strong>Запуск по расписанию</strong></div>
+          <p>Агент запускается по запросу, расписанию или триггеру — например, изменение статуса в ERP, входящее письмо или конкретное время. Выполнит задачу и уведомит о результате.</p>
+          <div class="sc-example"><span class="sc-ex-label">Пример</span><em>Запуск по cron, по входящему письму, изменению статуса или другому триггеру</em></div>
+        </div>
+        <div class="scenario-wide-media"><div class="video-placeholder"><div class="video-placeholder-inner" style="background:var(--surface-2,#f5f5f7);border-radius:12px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(0,0,0,0.06)"/><rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/><circle cx="14" cy="18" r="2" fill="var(--accent)" opacity=".5"/><path d="M8 24l8-5 6 4 5-3 5 4" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/></svg><span style="color:var(--text-secondary);font-size:13px;">Скриншот интерфейса</span></div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ROLES TABS -->
+<section class="roles-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-overline">По ролям</span>
+      <h2 class="section-h2">ИИ-агенты для каждой<br>бизнес-роли</h2>
+    </div>
+    <div class="roles-tabs">
+      <div class="role-tab active" onclick="switchRole('management', this)">Топ-менеджмент</div>
+      <div class="role-tab" onclick="switchRole('sales', this)">Продажи</div>
+      <div class="role-tab" onclick="switchRole('finance', this)">Финансы</div>
+      <div class="role-tab" onclick="switchRole('purchasing', this)">Закупки</div>
+      <div class="role-tab" onclick="switchRole('production', this)">Производство</div>
+      <div class="role-tab" onclick="switchRole('logistics', this)">Логистика</div>
+      <div class="role-tab" onclick="switchRole('hr', this)">HR</div>
+    </div>
+    <div class="roles-content">
+      <div class="role-panel active" id="role-management">
+        <p class="role-panel-sub">Предоставляют краткую и понятную картину по ключевым показателям, рискам и возможностям</p>
+        <div class="role-cards">
+          <div class="role-card">Аналитика и выводы по документам</div>
+          <div class="role-card">Сравнение стратегий, рынков и сценариев</div>
+          <div class="role-card">Выявление узких мест и точек роста в процессах</div>
+          <div class="role-card">Разработка персональных планов и рекомендаций</div>
+        
+        <a href="analitika.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-sales">
+        <p class="role-panel-sub">Помогают команде быстрее работать с клиентами и поддерживать CRM в актуальном состоянии</p>
+        <div class="role-cards">
+          <div class="role-card">Квалификация лидов по заданным критериям</div>
+          <div class="role-card">Подготовка персонализированных КП</div>
+          <div class="role-card">Подсказки по следующим действиям в CRM</div>
+          <div class="role-card">Резюме звонков и обновление статусов сделок</div>
+        
+        <a href="klientskiy-servis.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-finance">
+        <p class="role-panel-sub">Сокращают время на отчетность и помогают контролировать финансовые процессы</p>
+        <div class="role-cards">
+          <div class="role-card">Сведение управленческой отчетности из разных источников</div>
+          <div class="role-card">Контроль расходов и выявление отклонений</div>
+          <div class="role-card">Подготовка ответов на внутренние финансовые запросы</div>
+          <div class="role-card">Автоматизация сверок и закрытие периода</div>
+        
+        <a href="finansy.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-purchasing">
+        <p class="role-panel-sub">Упрощают поиск поставщиков и ускоряют работу с тендерами</p>
+        <div class="role-cards">
+          <div class="role-card">Подбор поставщиков под требования заявки</div>
+          <div class="role-card">Сравнение коммерческих предложений</div>
+          <div class="role-card">Контроль сроков и условий договора</div>
+          <div class="role-card">Подготовка аналитики по закупкам</div>
+        
+        <a href="dokumenty.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-production">
+        <p class="role-panel-sub">Помогают быстрее реагировать на отклонения и снижать простои</p>
+        <div class="role-cards">
+          <div class="role-card">Прогнозирование загрузки производственных линий</div>
+          <div class="role-card">Уведомление о рисках срыва сроков</div>
+          <div class="role-card">Анализ причин простоя и брака</div>
+          <div class="role-card">Подготовка и передача сменных отчетов</div>
+        
+        <a href="analitika.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-logistics">
+        <p class="role-panel-sub">Повышают прозрачность процессов доставки и сокращают ручную работу</p>
+        <div class="role-cards">
+          <div class="role-card">Построение оптимальных маршрутов</div>
+          <div class="role-card">Отслеживание статусов грузов в реальном времени</div>
+          <div class="role-card">Подготовка транспортных документов</div>
+          <div class="role-card">Анализ KPI перевозчиков</div>
+        
+        <a href="dokumenty.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="role-panel" id="role-hr">
+        <p class="role-panel-sub">Помогают быстрее закрывать вакансии и поддерживать сотрудников</p>
+        <div class="role-cards">
+          <div class="role-card">Скрининг резюме по требованиям вакансии</div>
+          <div class="role-card">Подготовка планов онбординга</div>
+          <div class="role-card">Ответы на типовые вопросы сотрудников</div>
+          <div class="role-card">Анализ опросов и выявление трендов</div>
+        
+        <a href="hr.html" class="role-scenario-btn">Смотреть сценарий <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="cases-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-overline">С чего начинают компании</span>
+      <h2 class="section-h2">Три области, в которых<br>сразу виден результат</h2>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-icon di-b">📚</div>
+        <div class="case-title">База знаний, которая отвечает сама</div>
+        <div class="case-desc">Загрузите регламенты, инструкции, договоры. Сотрудники задают вопросы в чате — агент отвечает на основе актуальных материалов. Каждый работает в своей сессии, база знаний общая.</div>
+        <div class="case-chips">
+          <span class="case-chip">База знаний компании</span>
+          <span class="case-chip">RAG-поиск</span>
+          <span class="case-chip">Версионирование</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon di-o">📬</div>
+        <div class="case-title">Разбор входящих сообщений</div>
+        <div class="case-desc">Агент разбирает входящие запросы на юридическую почту и готовит проект ответа или документа. Юрист видит поток готовых задач, берет нужную, проверяет и подтверждает. Рутина исчезает, экспертиза остается.</div>
+        <div class="case-chips">
+          <span class="case-chip">Обработка почты</span>
+          <span class="case-chip">Подготовка документов</span>
+          <span class="case-chip">Контроль человека</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon di-g">🔄</div>
+        <div class="case-title">Обновление данных в управленческих системах</div>
+        <div class="case-desc">В ERP меняется статус документа. Агент считывает изменение, обрабатывает данные по заданной логике и записывает результат в CRM. Оператор проверяет и подтверждает. Никаких ручных переносов между системами.</div>
+        <div class="case-chips">
+          <span class="case-chip">Автозапуск по событию</span>
+          <span class="case-chip">ERP → CRM</span>
+          <span class="case-chip">Подтверждение оператором</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="security-section">
+  <div class="security-inner">
+    <div class="security-left">
+      <span class="section-overline">Безопасность</span>
+      <h2 class="section-h2">Суверенная ИИ-инфраструктура</h2>
+      <p class="section-sub">Для бизнеса критически важны не только функциональность, но и надежность, безопасность и соответствие требованиям законодательства</p>
+    </div>
+    <div>
+      <div class="security-props">
+        <div class="sec-prop">
+          <div class="sec-prop-title">🇷🇺 Работает в РФ</div>
+          <div class="sec-prop-desc">Российское правовое поле. Без санкционных рисков и вопросов к юрисдикции данных</div>
+        </div>
+        <div class="sec-prop">
+          <div class="sec-prop-title">🔐 Данные под контролем</div>
+          <div class="sec-prop-desc">Ваши данные никогда не используются для дообучения моделей</div>
+        </div>
+        <div class="sec-prop">
+          <div class="sec-prop-title">🖥️ On-premise</div>
+          <div class="sec-prop-desc">Разверните платформу в своем контуре. Данные не покидают вашу инфраструктуру</div>
+        </div>
+        <div class="sec-prop">
+          <div class="sec-prop-title">👤 Управление доступом</div>
+          <div class="sec-prop-desc">SSO: Keycloak, LDAP / AD. Ролевая модель: пользователь, менеджер данных, администратор</div>
+        </div>
+        <div class="sec-prop">
+          <div class="sec-prop-title">📊 Логирование</div>
+          <div class="sec-prop-desc">Мониторинг, логирование и шифрование всех данных и операций агентов</div>
+        </div>
+        <div class="sec-prop">
+          <div class="sec-prop-title">🛡️ Политики хранения</div>
+          <div class="sec-prop-desc">Гибкие политики хранения и удаления данных под требования вашей компании</div>
+        </div>
+      </div>
+      <div class="security-certs">
+        <div class="cert-item">
+          <div class="ci-icon di-g">🛡️</div>
+          <div><strong>ФСТЭК</strong><span>Лицензии Л024-00107 и Л050-00107</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="ci-icon di-b">🔐</div>
+          <div><strong>ФСБ</strong><span>Лицензия ЛСЗ0016454</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="ci-icon di-g">✅</div>
+          <div><strong>Реестр Минцифры</strong><span>№20407 от 14.12.2023</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="ci-icon di-o">📋</div>
+          <div><strong>152-ФЗ</strong><span>Безопасное хранение персональных данных</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING STEPS -->
+<section class="onboarding-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-overline">Как происходит подключение</span>
+      <h2 class="section-h2">Три шага до работающего<br>ИИ в вашей компании</h2>
+    </div>
+    <div class="onboarding-steps">
+      <div class="ob-step">
+        <div class="ob-num">1</div>
+        <div class="ob-title">Оставьте заявку</div>
+        <div class="ob-desc">Наш менеджер свяжется с вами, чтобы уточнить бизнес-задачи, приоритетные сценарии и требования по безопасности</div>
+      </div>
+      <div class="ob-step">
+        <div class="ob-num">2</div>
+        <div class="ob-title">Консультация и демо</div>
+        <div class="ob-desc">Проведем консультацию с разбором ваших процессов и покажем демо на ваших задачах — без общих презентаций</div>
+      </div>
+      <div class="ob-step">
+        <div class="ob-num">3</div>
+        <div class="ob-title">Выберите тариф</div>
+        <div class="ob-desc">Подберем оптимальный формат подключения на базе опыта наших клиентов. От демо до первого ROI — 3 месяца</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-card">
+      <div class="cta-left">
+        <h2>Посмотрите платформу на ваших задачах</h2>
+        <p>Оставьте заявку. Менеджер свяжется в течение рабочего дня и покажет демо под ваш сценарий.</p>
+        <div class="cta-check">
+          <span>✓</span>
+          <span>От демо до первого ROI за 3 месяца</span>
+        </div>
+        <div class="cta-check">
+          <span>✓</span>
+          <span>Пилот на ваших данных и процессах</span>
+        </div>
+        <div class="cta-check">
+          <span>✓</span>
+          <span>Выделенный менеджер на весь проект</span>
+        </div>
+      </div>
+      <div class="cta-form">
+        <input type="text"  class="cta-input" placeholder="Имя">
+        <input type="email" class="cta-input" placeholder="Рабочая почта">
+        <input type="tel"   class="cta-input" placeholder="Рабочий телефон">
+        <input type="text"  class="cta-input" placeholder="Компания">
+        <button class="cta-btn">Заказать демо</button>
+        <p class="cta-legal">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="28">
+        </div>
+        <div class="footer-contacts">
+          <a href="mailto:info@gigab2b.ru">info@gigab2b.ru</a>
+          <a href="mailto:press@gigab2b.ru">press@gigab2b.ru — для СМИ</a>
+          <a href="pomoshch.html" class="footer-help-link">Помощь и поддержка</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://t.me/gigachat_business" class="footer-tg" title="Telegram" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#229ED9"/><path d="M26.07 10.27L7.93 17.37c-1.2.47-1.19 1.12-.22 1.41l4.6 1.44 10.65-6.72c.5-.31.96-.14.58.2l-8.62 7.78-.33 4.86c.49 0 .7-.22.97-.48l2.33-2.27 4.84 3.57c.89.49 1.53.24 1.75-.82l3.17-14.94c.32-1.28-.49-1.86-1.54-1.42z" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Платформа</h6>
+        <ul>
+          <li><a href="gigacowork.html">GigaCowork</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="prostranstva.html">Пространства</a></li>
+          <li><a href="agenty.html">ИИ-агенты</a></li>
+          <li><a href="navyki.html">Навыки</a></li>
+          <li><a href="komandy.html">Быстрые команды</a></li>
+          <li><a href="integracii.html">Коннекторы</a></li>
+          <li><a href="raspisanie.html">Запуск по расписанию</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="bezopasnost.html">Безопасность</a></li>
+          <li><a href="chto-novogo.html">Что нового</a></li>
+          <li><a href="#">Документация</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Сценарии</h6>
+        <ul>
+          <li><a href="dokumenty.html">Работа с документами</a></li>
+          <li><a href="analitika.html">Аналитика и отчётность</a></li>
+          <li><a href="baza-znanii.html">База знаний</a></li>
+          <li><a href="klientskiy-servis.html">Клиентский сервис</a></li>
+          <li><a href="hr.html">HR и кадры</a></li>
+          <li><a href="finansy.html">Финансы и контроль</a></li>
+          <li><a href="yuridicheskie.html">Юридические задачи</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Поставки</h6>
+        <ul>
+          <li><a href="oblako.html">Облако</a></li>
+          <li><a href="gibrid.html">Гибрид</a></li>
+          <li><a href="pak.html">ПАК</a></li>
+          <li><a href="sravnenie.html">Сравнить варианты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Компания</h6>
+        <ul>
+          <li><a href="o-nas.html">О компании</a></li>
+          <li><a href="keysy.html">Кейсы</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="partnery.html">Партнёрам</a></li>
+          <li><a href="karera.html">Карьера</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ГигаЧат Бизнес · ООО «Салют для Бизнеса»<br>
+        121170, г. Москва, Садовая-Самотёчная ул., 24/27 · ИНН 7804568396
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchRole(role, el) {
+  document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('role-' + role).classList.add('active');
+}
+</script>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gigaenterprise.ai — навигация v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header>
+<nav class="topbar">
+
+  <a class="logo" href="#">
+    <img src="Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
+  </a>
+
+  <ul class="nav-links">
+
+    <!-- ── ПРОДУКТ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Продукт
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown product-drop">
+
+        <!-- Левая панель: hero + быстрые ссылки -->
+        <div class="drop-panel-left">
+          <a class="drop-hero" href="pages/gigacowork.html">
+            <div class="drop-hero-logo"><img src="Кнопка GigaCowork.png" alt="GigaCowork"></div>
+            <p>Корпоративная AI-платформа. Делегируйте задачи агентам, автоматизируйте процессы, работайте с данными внутри своего контура.</p>
+            <span class="drop-hero-link">Обзор платформы →</span>
+          </a>
+          <a class="drop-link" href="pages/chto-novogo.html"><span class="dot"></span>Что нового</a>
+          <a class="drop-link"><span class="dot"></span>Документация</a>
+        </div>
+
+        <!-- Правая панель: возможности + GigaChat API -->
+        <div class="drop-panel-right">
+          <span class="drop-section-title">Возможности GigaCowork</span>
+          <a class="drop-item" href="pages/prostranstva.html">
+            <div class="drop-icon di-b">🗂️</div>
+            <div class="drop-text"><strong>Рабочие пространства</strong><span>Совместная работа команды в едином AI-окружении</span></div>
+          </a>
+          <a class="drop-item" href="pages/agenty.html">
+            <div class="drop-icon di-g">🤖</div>
+            <div class="drop-text"><strong>ИИ-агенты</strong><span>Работают автономно, решают задачи без участия человека</span></div>
+          </a>
+          <a class="drop-item" href="pages/navyki.html">
+            <div class="drop-icon di-o">⚡</div>
+            <div class="drop-text"><strong>Навыки агентов</strong><span>Готовые и кастомные сценарии поведения агентов</span></div>
+          </a>
+          <a class="drop-item" href="pages/komandy.html">
+            <div class="drop-icon di-g">⌨️</div>
+            <div class="drop-text"><strong>Быстрые команды</strong><span>Сохранённые запросы, которые вызываются через /</span></div>
+          </a>
+          <a class="drop-item" href="pages/integracii.html">
+            <div class="drop-icon di-b">🔌</div>
+            <div class="drop-text"><strong>Интеграции (MCP-коннекторы)</strong><span>Подключение к ERP, CRM, BI и внутренним системам</span></div>
+          </a>
+          <a class="drop-item" href="pages/raspisanie.html">
+            <div class="drop-icon di-p">🕐</div>
+            <div class="drop-text"><strong>Запуск по расписанию</strong><span>Автоматический запуск агентов в нужное время</span></div>
+          </a>
+
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── СЦЕНАРИИ ──────────────────── -->
+    <li>
+      <button class="nav-btn">Сценарии
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown tasks-drop">
+
+        <div class="tasks-scenarios">
+          <a class="drop-item" href="pages/dokumenty.html">
+            <div class="drop-icon di-b">📄</div>
+            <div class="drop-text"><strong>Работа с документами</strong><span>Договор проверен за 2 мин вместо 40</span></div>
+          </a>
+          <a class="drop-item" href="pages/analitika.html">
+            <div class="drop-icon di-o">📊</div>
+            <div class="drop-text"><strong>Аналитика и отчётность</strong><span>Еженедельный отчёт без ручной выгрузки</span></div>
+          </a>
+          <a class="drop-item" href="pages/baza-znanii.html">
+            <div class="drop-icon di-g">🧠</div>
+            <div class="drop-text"><strong>Корпоративная база знаний</strong><span>Сотрудник спрашивает — агент отвечает по вашим регламентам</span></div>
+          </a>
+          <a class="drop-item" href="pages/klientskiy-servis.html">
+            <div class="drop-icon di-g">🎧</div>
+            <div class="drop-text"><strong>Клиентский сервис</strong><span>40–60% обращений закрываются без оператора</span></div>
+          </a>
+          <a class="drop-item" href="pages/hr.html">
+            <div class="drop-icon di-p">👥</div>
+            <div class="drop-text"><strong>HR и кадровые процессы</strong><span>−93% времени на поиск кандидатов</span></div>
+          </a>
+          <a class="drop-item" href="pages/finansy.html">
+            <div class="drop-icon di-r">💰</div>
+            <div class="drop-text"><strong>Финансы и контроль</strong><span>Закрытие периода без ручных сверок</span></div>
+          </a>
+          <a class="drop-item" href="pages/yuridicheskie.html">
+            <div class="drop-icon di-b">⚖️</div>
+            <div class="drop-text"><strong>Юридические задачи</strong><span>Юрист видит поток готовых задач, а не входящих писем</span></div>
+          </a>
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── ИНТЕГРАЦИЯ ───────────── -->
+    <li>
+      <button class="nav-btn">Поставки
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown deploy-drop">
+
+        <!-- Обзор — полная ширина -->
+        <div class="deploy-overview">
+          <div class="deploy-overview-left">
+            <strong>Подберём вариант, подходящий под требования вашей инфраструктуры и безопасности</strong>
+          </div>
+          <div class="deploy-overview-links">
+            <a class="deploy-ov-link" href="pages/sravnenie.html">Сравнить</a>
+            <a class="deploy-ov-link primary">Оставить заявку →</a>
+          </div>
+        </div>
+
+        <a class="deploy-col" href="pages/oblako.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-g">☁️</div>
+            <div>
+              <div class="dch-name">Облако</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Запуск без инфраструктурных затрат и настройки серверов</li>
+            <li>Защищённая облачная инфраструктура — ЦОД на территории РФ</li>
+            <li>Оптимально для быстрого старта</li>
+            <li><strong>Для команд от 100 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pages/gibrid.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-o">🔀</div>
+            <div>
+              <div class="dch-name">Гибрид</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Данные хранятся на ваших серверах — модель в облаке</li>
+            <li>Легко масштабируется на большие команды</li>
+            <li>Оптимальная стоимость владения при росте числа пользователей</li>
+            <li><strong>Для команд от 500 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pages/pak.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-b">🖥️</div>
+            <div>
+              <div class="dch-name">ПАК</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Сервер в вашем контуре с предустановленным ПО и моделями</li>
+            <li>Возможна полная изоляция сети</li>
+            <li>Конфигурация софта и оборудования по запросу</li>
+            <li><strong>Безлимитное количество пользователей</strong></li>
+          </ul>
+        </a>
+
+      </div>
+    </li>
+
+    <!-- ── БЕЗОПАСНОСТЬ ───────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='pages/bezopasnost.html'">Безопасность</button>
+    </li>
+
+    <!-- ── КЕЙСЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='pages/keysy.html'">Кейсы</button>
+    </li>
+
+    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Материалы
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown resources-drop">
+        <div class="res-col">
+          <a class="drop-item" href="pages/blog.html">
+            <div class="drop-icon di-p">✍️</div>
+            <div class="drop-text"><strong>Блог</strong><span>Обзоры, экспертные статьи</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-b">📖</div>
+            <div class="drop-text"><strong>Документация</strong><span>Руководства, API, интеграции</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-o">🎓</div>
+            <div class="drop-text"><strong>Курсы и академия</strong><span>Обучение команды работе с AI</span></div>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <!-- ── О НАС ─────────────────── -->
+    <li>
+      <button class="nav-btn">О компании
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown oneus-drop">
+        <div class="res-col" style="background: var(--surface);">
+          <a class="drop-link" href="pages/o-nas.html"><span class="dot"></span>О компании</a>
+          <a class="drop-link"><span class="dot"></span>Новости</a>
+          <a class="drop-link" href="pages/karera.html"><span class="dot"></span>Карьера</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-ghost">Связаться</button>
+    <button class="btn-primary">Попробовать</button>
+  </div>
+
+</nav>
+</header>
+
+
+<!-- ══════════════════════════════
+     MAIN
+══════════════════════════════ -->
+<main>
+
+  <!-- ── HERO ───────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-h1">Больше результатов<br>без роста команды</h1>
+        <p class="hero-sub">Агенты собирают и анализируют данные из корпоративных систем, выполняют задачи на уровне лучших экспертов и помогают быстрее принимать управленческие решения.</p>
+        <div class="hero-cta">
+          <button class="btn-hero-primary">Попробовать</button>
+          <a href="pages/keysy.html" class="btn-hero-ghost">Смотреть кейсы</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <b>81,5%</b>
+            <small>экономии времени сотрудника</small>
+          </div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat">
+            <b>x5</b>
+            <small>рост продуктивности команды</small>
+          </div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat">
+            <b>3 мес</b>
+            <small>от демо до первого ROI</small>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <span class="hero-visual-label">GigaCowork · demo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ЛОГОТИПЫ КЛИЕНТОВ ─────────────────────── -->
+  <section class="logos-strip">
+    <div class="logos-inner">
+      <span class="logos-label">Среди клиентов</span>
+      <div class="logos-row">
+        <div class="logo-pill">ФосАгро</div>
+        <div class="logo-pill">АТБ</div>
+        <div class="logo-pill">Frank Auto</div>
+        <div class="logo-pill">Группа ЦРТ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ТРИ КЛЮЧЕВЫХ ПРЕИМУЩЕСТВА ────────────── -->
+  <section class="pillars">
+    <div class="section-inner">
+      <div class="pillars-grid">
+
+        <div class="pillar-card">
+          <div class="drop-icon di-g" style="width:40px;height:40px;border-radius:10px;font-size:20px;">📈</div>
+          <h3>Масштаб без роста штата</h3>
+          <p>ИИ-агенты выполняют задачи 24/7 без выгорания и текучки. Тот же объем работ — теми же силами. Больше выполненных задач без расширения штата.</p>
+          <div class="pillar-metric">-20% потребности в расширении штата</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="drop-icon di-b" style="width:40px;height:40px;border-radius:10px;font-size:20px;">🔄</div>
+          <h3>Один контур для всех ИИ-инициатив</h3>
+          <p>Управление моделями, агентами и доступами из одного места. Без десятков разрозненных инструментов и теневых ИИ-решений в отделах.</p>
+          <div class="pillar-metric">Интеграция с 19+ корпоративными системами</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="drop-icon di-r" style="width:40px;height:40px;border-radius:10px;font-size:20px;">🔒</div>
+          <h3>Данные не покидают периметр</h3>
+          <p>Чувствительные данные обрабатываются в изолированной среде. Три варианта поставки — выбираете уровень контроля сами.</p>
+          <div class="pillar-metric">Облако, Гибрид, ПАК — под любые требования ИБ</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ПЛАТФОРМА ─────────────────────────────── -->
+  <section class="platform">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2>Что входит в платформу</h2>
+          <p>Готовые инструменты для разных задач и ролей</p>
+        </div>
+      </div>
+      <div class="platform-grid">
+
+        <div class="platform-main-card">
+          <div class="pm-top">
+            <div>
+              <img src="Logo_GC_ENG_black.svg" alt="GigaCowork" style="height:28px; display:block; margin-bottom:6px;">
+            </div>
+          </div>
+          <p>Корпоративное рабочее пространство с ИИ-агентами. Работает с документами, отвечает на вопросы по базе знаний, выполняет поручения и интегрируется в ваши системы без написания кода.</p>
+          <div class="pm-features">
+            <span>Рабочие пространства</span>
+            <span>ИИ-агенты без кода</span>
+            <span>Навыки агентов</span>
+            <span>MCP-интеграции</span>
+            <span>Запуск по расписанию</span>
+          </div>
+          <a class="drop-link accent" href="pages/gigacowork.html" style="padding-left:0; margin-top:4px;">Обзор ГигаКоворк →</a>
+        </div>
+
+        <div class="platform-side">
+          <div class="platform-card">
+            <div class="drop-icon di-o">☁️</div>
+            <div>
+              <strong>Три варианта поставки</strong>
+              <span>Облако, Гибрид и ПАК. Подберём под требования вашей ИБ и регулятора.</span>
+            </div>
+          </div>
+          <div class="platform-card">
+            <div class="drop-icon di-p">🎓</div>
+            <div>
+              <strong>Обучение и сопровождение</strong>
+              <span>Корпоративные курсы в СберУниверситете, ИТ-консалтинг внедрения, выделенный менеджер.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── КЕЙСЫ ─────────────────────────────────── -->
+  <section class="cases">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2>Как используют клиенты</h2>
+        </div>
+        <a href="#" class="section-link">Все кейсы →</a>
+      </div>
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <div class="case-metric-hero">
+            <b>-93%</b>
+            <small>время на поиск кандидата</small>
+          </div>
+          <div class="case-client">ФосАгро</div>
+          <div class="case-top">
+            <span class="case-industry">Промышленность</span>
+            <span class="case-scenario">HR</span>
+          </div>
+          <p>Запустили ИИ-агента для анализа резюме и первичной оценки кандидатов. Агент подключен к корпоративным системам вакансий и автоматически готовит заключение по каждому соискателю.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-metric-hero">
+            <b>81%</b>
+            <small>сокращение времени сотрудника</small>
+          </div>
+          <div class="case-client">Азиатско-Тихоокеанский Банк</div>
+          <div class="case-top">
+            <span class="case-industry">Финансы</span>
+            <span class="case-scenario">Внедрение GenAI</span>
+          </div>
+          <p>Интегрировали GenAI в корпоративный контур с нуля. За три месяца запустили 5 пилотов в HR, операционном блоке и риск-подразделениях. Данные не покидали периметр банка.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-metric-hero">
+            <b>200+</b>
+            <small>часов экономии в месяц</small>
+          </div>
+          <div class="case-client">Frank Auto</div>
+          <div class="case-top">
+            <span class="case-industry">Автодилер</span>
+            <span class="case-scenario">Аналитика звонков</span>
+          </div>
+          <p>Встроили ГигаЧат в сервис речевой аналитики. Прослушивание звонков стало автоматическим. Аналитики перестали тратить время на рутинную оценку коммуникаций.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── БЕЗОПАСНОСТЬ ──────────────────────────── -->
+  <section class="security-brief">
+    <div class="security-card">
+      <div class="security-left">
+        <h2>Всерьез и надолго: суверенные ИИ-решения</h2>
+        <p>Для бизнеса критически важны не только функциональность, но и надежность, безопасность и соответствие требованиям законодательства, поэтому GigaCowork разработан с учетом этих приоритетов:</p>
+      </div>
+      <div class="security-certs">
+        <div class="cert-item">
+          <div class="drop-icon di-g">🏦</div>
+          <div><strong>Группа Сбер</strong><span>Технологии, инфраструктура и экспертиза для запуска ИИ‑трансформации бизнеса любого масштаба.</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="drop-icon di-b">🛡️</div>
+          <div><strong>Безопасная ИИ-инфраструктура в РФ</strong><span>Работает в российском правовом поле. Лицензии ФСТЭК и ФСБ.</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="drop-icon di-o">🖥️</div>
+          <div><strong>Локальное развертывание / On-premise</strong><span>Разверните платформу в своем контуре. Данные не покидают вашу инфраструктуру.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <div class="cta-card">
+        <div class="cta-left">
+          <h2>Проверьте платформу на ваших задачах</h2>
+          <p>Заполните форму, мы отправим письмо для входа в GigaCowork и открытия пробного доступа для вашей компании.</p>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="color:var(--accent); font-size:16px;">✓</span>
+              <span style="font-size:13.5px; color:rgba(255,255,255,0.5);">От демо до первого ROI за 3 месяца</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="color:var(--accent); font-size:16px;">✓</span>
+              <span style="font-size:13.5px; color:rgba(255,255,255,0.5);">Пилот на ваших данных и процессах</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="color:var(--accent); font-size:16px;">✓</span>
+              <span style="font-size:13.5px; color:rgba(255,255,255,0.5);">Выделенный менеджер на весь проект</span>
+            </div>
+          </div>
+        </div>
+        <div class="cta-form">
+          <input type="text"  class="cta-input" placeholder="Имя">
+          <input type="email" class="cta-input" placeholder="Рабочая почта">
+          <input type="tel"   class="cta-input" placeholder="Рабочий телефон">
+          <input type="text"  class="cta-input" placeholder="Компания">
+          <button class="cta-btn">Заказать демо</button>
+          <p class="cta-legal">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="28">
+        </div>
+        <div class="footer-contacts">
+          <a href="mailto:info@gigab2b.ru">info@gigab2b.ru</a>
+          <a href="mailto:press@gigab2b.ru">press@gigab2b.ru — для СМИ</a>
+        </div>
+        <a href="https://t.me/gigachat_business" class="footer-tg" title="Telegram" target="_blank">
+          <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#229ED9"/><path d="M26.07 10.27L7.93 17.37c-1.2.47-1.19 1.12-.22 1.41l4.6 1.44 10.65-6.72c.5-.31.96-.14.58.2l-8.62 7.78-.33 4.86c.49 0 .7-.22.97-.48l2.33-2.27 4.84 3.57c.89.49 1.53.24 1.75-.82l3.17-14.94c.32-1.28-.49-1.86-1.54-1.42z" fill="white"/></svg>
+        </a>
+        <a href="pages/pomoshch.html" class="footer-help-link">Помощь и поддержка</a>
+      </div>
+      <div class="footer-col">
+        <h6>Платформа</h6>
+        <ul>
+          <li><a href="pages/gigacowork.html">GigaCowork</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="pages/prostranstva.html">Пространства</a></li>
+          <li><a href="pages/agenty.html">ИИ-агенты</a></li>
+          <li><a href="pages/navyki.html">Навыки</a></li>
+          <li><a href="pages/komandy.html">Быстрые команды</a></li>
+          <li><a href="pages/integracii.html">Коннекторы</a></li>
+          <li><a href="pages/raspisanie.html">Запуск по расписанию</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="pages/bezopasnost.html">Безопасность</a></li>
+          <li><a href="pages/chto-novogo.html">Что нового</a></li>
+          <li><a href="#">Документация</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Сценарии</h6>
+        <ul>
+          <li><a href="pages/dokumenty.html">Работа с документами</a></li>
+          <li><a href="pages/analitika.html">Аналитика и отчётность</a></li>
+          <li><a href="pages/baza-znanii.html">База знаний</a></li>
+          <li><a href="pages/klientskiy-servis.html">Клиентский сервис</a></li>
+          <li><a href="pages/hr.html">HR и кадры</a></li>
+          <li><a href="pages/finansy.html">Финансы и контроль</a></li>
+          <li><a href="pages/yuridicheskie.html">Юридические задачи</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Поставки</h6>
+        <ul>
+          <li><a href="pages/oblako.html">Облако</a></li>
+          <li><a href="pages/gibrid.html">Гибрид</a></li>
+          <li><a href="pages/pak.html">ПАК</a></li>
+          <li><a href="pages/sravnenie.html">Сравнить варианты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Компания</h6>
+        <ul>
+          <li><a href="pages/o-nas.html">О компании</a></li>
+          <li><a href="pages/keysy.html">Кейсы</a></li>
+          <li><a href="pages/blog.html">Блог</a></li>
+          <li><a href="pages/partnery.html">Партнёрам</a></li>
+          <li><a href="pages/karera.html">Карьера</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ГигаЧат Бизнес · ООО «Салют для Бизнеса»<br>
+        121170, г. Москва, Садовая-Самотёчная ул., 24/27 · ИНН 7804568396
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

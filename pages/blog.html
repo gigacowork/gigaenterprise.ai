@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — ГигаЧат Бизнес</title>
+<meta name="description" content="Статьи, кейсы и исследования о корпоративном ИИ от команды ГигаЧат Бизнес.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/inner-pages.css">
+<style>
+/* ── Blog layout ─────────────────────────────────────── */
+.blog-hero {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--border);
+}
+.blog-hero h1 { font-size: clamp(32px, 5vw, 48px); margin-bottom: 12px; }
+.blog-hero p { font-size: 17px; color: var(--muted); max-width: 520px; }
+
+/* Filter bar */
+.blog-filters {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  background: var(--bg);
+  z-index: 80;
+}
+.blog-filters-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.blog-filters-inner::-webkit-scrollbar { display: none; }
+.filter-chip {
+  white-space: nowrap;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+}
+.filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+.filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filter-divider { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; margin: 0 4px; }
+
+/* Main layout */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  padding: 48px 0 80px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .blog-layout { grid-template-columns: 1fr; }
+  .blog-sidebar { display: none; }
+}
+
+/* Featured post */
+.post-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .18s;
+}
+.post-featured:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+.post-featured-img {
+  background: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 100%);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  position: relative;
+}
+.featured-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.post-featured-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.post-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.post-date { font-size: 12.5px; color: var(--muted); }
+.post-featured-body h2 { font-size: 22px; line-height: 1.35; margin-bottom: 12px; }
+.post-featured-body p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.post-author { display: flex; align-items: center; gap: 10px; margin-top: auto; }
+.author-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #c7d7f5, #a5c2f5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--accent);
+  flex-shrink: 0;
+}
+.author-name { font-size: 13px; font-weight: 600; }
+.author-role { font-size: 12px; color: var(--muted); }
+@media (max-width: 700px) {
+  .post-featured { grid-template-columns: 1fr; }
+  .post-featured-img { min-height: 180px; }
+}
+
+/* Post grid */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+@media (max-width: 640px) { .post-grid { grid-template-columns: 1fr; } }
+
+.post-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .18s, transform .18s;
+}
+.post-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.07); transform: translateY(-2px); }
+.post-card-img {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.post-card-img.cat-case   { background: linear-gradient(135deg, #fef3e2, #fde0b0); }
+.post-card-img.cat-guide  { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+.post-card-img.cat-news   { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
+.post-card-img.cat-research { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+.post-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.post-card-body h3 { font-size: 15px; line-height: 1.4; margin-bottom: 8px; }
+.post-card-body p { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; flex: 1; }
+.post-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.read-time { font-size: 12px; color: var(--muted); }
+
+/* Load more */
+.load-more-wrap { text-align: center; padding: 8px 0 16px; }
+.btn-load-more {
+  padding: 12px 32px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  cursor: pointer;
+  transition: all .15s;
+}
+.btn-load-more:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Sidebar */
+.blog-sidebar { display: flex; flex-direction: column; gap: 24px; }
+.sidebar-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.sidebar-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+.sidebar-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.sidebar-topic {
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #f2f3f5;
+  font-size: 12.5px;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .15s;
+}
+.sidebar-topic:hover { background: var(--accent); color: #fff; }
+.sidebar-popular { display: flex; flex-direction: column; gap: 0; }
+.popular-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: color .15s;
+}
+.popular-item:last-child { border-bottom: none; }
+.popular-item:hover h5 { color: var(--accent); }
+.popular-num { font-size: 18px; font-weight: 800; color: var(--accent); opacity: .2; flex-shrink: 0; line-height: 1.2; }
+.popular-item h5 { font-size: 13px; line-height: 1.4; margin-bottom: 3px; }
+.popular-item span { font-size: 12px; color: var(--muted); }
+.sidebar-subscribe h4 { margin-bottom: 8px; }
+.sidebar-subscribe p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+.subscribe-form { display: flex; flex-direction: column; gap: 8px; }
+.subscribe-form input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color .15s;
+}
+.subscribe-form input:focus { border-color: var(--accent); }
+.subscribe-form button {
+  padding: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<header>
+<nav class="topbar">
+
+  <a class="logo" href="../index.html">
+    <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
+  </a>
+
+  <ul class="nav-links">
+
+    <!-- ── ПРОДУКТ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Продукт
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown product-drop">
+
+        <!-- Левая панель: hero + быстрые ссылки -->
+        <div class="drop-panel-left">
+          <a class="drop-hero" href="gigacowork.html">
+            <div class="drop-hero-logo"><img src="../Кнопка GigaCowork.png" alt="GigaCowork"></div>
+            <p>Корпоративная AI-платформа. Делегируйте задачи агентам, автоматизируйте процессы, работайте с данными внутри своего контура.</p>
+            <span class="drop-hero-link">Обзор платформы →</span>
+          </a>
+          <a class="drop-link" href="chto-novogo.html"><span class="dot"></span>Что нового</a>
+          <a class="drop-link"><span class="dot"></span>Документация</a>
+        </div>
+
+        <!-- Правая панель: возможности + GigaChat API -->
+        <div class="drop-panel-right">
+          <span class="drop-section-title">Возможности GigaCowork</span>
+          <a class="drop-item" href="prostranstva.html">
+            <div class="drop-icon di-b">🗂️</div>
+            <div class="drop-text"><strong>Рабочие пространства</strong><span>Совместная работа команды в едином AI-окружении</span></div>
+          </a>
+          <a class="drop-item" href="agenty.html">
+            <div class="drop-icon di-g">🤖</div>
+            <div class="drop-text"><strong>ИИ-агенты</strong><span>Работают автономно, решают задачи без участия человека</span></div>
+          </a>
+          <a class="drop-item" href="navyki.html">
+            <div class="drop-icon di-o">⚡</div>
+            <div class="drop-text"><strong>Навыки агентов</strong><span>Готовые и кастомные сценарии поведения агентов</span></div>
+          </a>
+          <a class="drop-item" href="komandy.html">
+            <div class="drop-icon di-g">⌨️</div>
+            <div class="drop-text"><strong>Быстрые команды</strong><span>Сохранённые запросы, которые вызываются через /</span></div>
+          </a>
+          <a class="drop-item" href="integracii.html">
+            <div class="drop-icon di-b">🔌</div>
+            <div class="drop-text"><strong>Интеграции (MCP-коннекторы)</strong><span>Подключение к ERP, CRM, BI и внутренним системам</span></div>
+          </a>
+          <a class="drop-item" href="raspisanie.html">
+            <div class="drop-icon di-p">🕐</div>
+            <div class="drop-text"><strong>Запуск по расписанию</strong><span>Автоматический запуск агентов в нужное время</span></div>
+          </a>
+
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── СЦЕНАРИИ ──────────────────── -->
+    <li>
+      <button class="nav-btn">Сценарии
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown tasks-drop">
+
+        <div class="tasks-scenarios">
+          <a class="drop-item" href="dokumenty.html">
+            <div class="drop-icon di-b">📄</div>
+            <div class="drop-text"><strong>Работа с документами</strong><span>Договор проверен за 2 мин вместо 40</span></div>
+          </a>
+          <a class="drop-item" href="analitika.html">
+            <div class="drop-icon di-o">📊</div>
+            <div class="drop-text"><strong>Аналитика и отчётность</strong><span>Еженедельный отчёт без ручной выгрузки</span></div>
+          </a>
+          <a class="drop-item" href="baza-znanii.html">
+            <div class="drop-icon di-g">🧠</div>
+            <div class="drop-text"><strong>Корпоративная база знаний</strong><span>Сотрудник спрашивает — агент отвечает по вашим регламентам</span></div>
+          </a>
+          <a class="drop-item" href="klientskiy-servis.html">
+            <div class="drop-icon di-g">🎧</div>
+            <div class="drop-text"><strong>Клиентский сервис</strong><span>40–60% обращений закрываются без оператора</span></div>
+          </a>
+          <a class="drop-item" href="hr.html">
+            <div class="drop-icon di-p">👥</div>
+            <div class="drop-text"><strong>HR и кадровые процессы</strong><span>−93% времени на поиск кандидатов</span></div>
+          </a>
+          <a class="drop-item" href="finansy.html">
+            <div class="drop-icon di-r">💰</div>
+            <div class="drop-text"><strong>Финансы и контроль</strong><span>Закрытие периода без ручных сверок</span></div>
+          </a>
+          <a class="drop-item" href="yuridicheskie.html">
+            <div class="drop-icon di-b">⚖️</div>
+            <div class="drop-text"><strong>Юридические задачи</strong><span>Юрист видит поток готовых задач, а не входящих писем</span></div>
+          </a>
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── ИНТЕГРАЦИЯ ───────────── -->
+    <li>
+      <button class="nav-btn">Поставки
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown deploy-drop">
+
+        <!-- Обзор — полная ширина -->
+        <div class="deploy-overview">
+          <div class="deploy-overview-left">
+            <strong>Подберём вариант, подходящий под требования вашей инфраструктуры и безопасности</strong>
+          </div>
+          <div class="deploy-overview-links">
+            <a class="deploy-ov-link" href="sravnenie.html">Сравнить</a>
+            <a class="deploy-ov-link primary">Оставить заявку →</a>
+          </div>
+        </div>
+
+        <a class="deploy-col" href="oblako.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-g">☁️</div>
+            <div>
+              <div class="dch-name">Облако</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Запуск без инфраструктурных затрат и настройки серверов</li>
+            <li>Защищённая облачная инфраструктура — ЦОД на территории РФ</li>
+            <li>Оптимально для быстрого старта</li>
+            <li><strong>Для команд от 100 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="gibrid.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-o">🔀</div>
+            <div>
+              <div class="dch-name">Гибрид</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Данные хранятся на ваших серверах — модель в облаке</li>
+            <li>Легко масштабируется на большие команды</li>
+            <li>Оптимальная стоимость владения при росте числа пользователей</li>
+            <li><strong>Для команд от 500 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pak.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-b">🖥️</div>
+            <div>
+              <div class="dch-name">ПАК</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Сервер в вашем контуре с предустановленным ПО и моделями</li>
+            <li>Возможна полная изоляция сети</li>
+            <li>Конфигурация софта и оборудования по запросу</li>
+            <li><strong>Безлимитное количество пользователей</strong></li>
+          </ul>
+        </a>
+
+      </div>
+    </li>
+
+    <!-- ── БЕЗОПАСНОСТЬ ───────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='bezopasnost.html'">Безопасность</button>
+    </li>
+
+    <!-- ── КЕЙСЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='keysy.html'">Кейсы</button>
+    </li>
+
+    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Материалы
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown resources-drop">
+        <div class="res-col">
+          <a class="drop-item" href="blog.html">
+            <div class="drop-icon di-p">✍️</div>
+            <div class="drop-text"><strong>Блог</strong><span>Обзоры, экспертные статьи</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-b">📖</div>
+            <div class="drop-text"><strong>Документация</strong><span>Руководства, API, интеграции</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-o">🎓</div>
+            <div class="drop-text"><strong>Курсы и академия</strong><span>Обучение команды работе с AI</span></div>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <!-- ── О НАС ─────────────────── -->
+    <li>
+      <button class="nav-btn">О компании
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown oneus-drop">
+        <div class="res-col" style="background: var(--surface);">
+          <a class="drop-link" href="o-nas.html"><span class="dot"></span>О компании</a>
+          <a class="drop-link"><span class="dot"></span>Новости</a>
+          <a class="drop-link" href="karera.html"><span class="dot"></span>Карьера</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-ghost">Связаться</button>
+    <button class="btn-primary">Попробовать</button>
+  </div>
+
+</nav>
+</header>
+
+<!-- ── Blog Hero ──────────────────────────────────────── -->
+<section class="blog-hero">
+  <div class="container">
+    <h1>Блог</h1>
+    <p>Кейсы, исследования и практические руководства по внедрению ИИ в корпоративные процессы.</p>
+  </div>
+</section>
+
+<!-- ── Filter bar ─────────────────────────────────────── -->
+<div class="blog-filters">
+  <div class="container">
+    <div class="blog-filters-inner">
+      <button class="filter-chip active">Все материалы</button>
+      <button class="filter-chip">Кейсы</button>
+      <button class="filter-chip">Руководства</button>
+      <button class="filter-chip">Исследования</button>
+      <button class="filter-chip">Новости</button>
+      <div class="filter-divider"></div>
+      <button class="filter-chip">HR</button>
+      <button class="filter-chip">Юридические задачи</button>
+      <button class="filter-chip">Финансы</button>
+      <button class="filter-chip">Документы</button>
+      <button class="filter-chip">Аналитика</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main content ───────────────────────────────────── -->
+<div class="container">
+  <div class="blog-layout">
+
+    <!-- Feed -->
+    <main>
+
+      <!-- Featured -->
+      <a href="#" class="post-featured">
+        <div class="post-featured-img">
+          🤖
+          <span class="featured-badge">Главное</span>
+        </div>
+        <div class="post-featured-body">
+          <div>
+            <div class="post-meta">
+              <span class="post-tag">Кейс</span>
+              <span class="post-date">12 июня 2025</span>
+            </div>
+            <h2>Как ФосАгро сократил время скрининга кандидатов на 93% с помощью ИИ-агента</h2>
+            <p>Разбираем, как HR-команда автоматизировала первичный отбор резюме и что это изменило в работе рекрутеров.</p>
+          </div>
+          <div class="post-author">
+            <div class="author-avatar">АК</div>
+            <div>
+              <div class="author-name">Алексей Козлов</div>
+              <div class="author-role">Продуктовый менеджер</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Grid -->
+      <div class="post-grid">
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-guide">📋</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Руководство</span>
+              <span class="post-date">5 июня 2025</span>
+            </div>
+            <h3>С чего начать внедрение ИИ: пошаговый план для команды</h3>
+            <p>Как выбрать первый сценарий, оценить готовность инфраструктуры и запустить пилот без лишних рисков.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">HR</span>
+              <span class="read-time">8 мин</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-case">⚖️</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Кейс</span>
+              <span class="post-date">28 мая 2025</span>
+            </div>
+            <h3>Юридический отдел АТБ: договор проверен за 2 минуты вместо 40</h3>
+            <p>Как автоматизация проверки договоров ускорила работу юристов в 20 раз и снизила число ошибок.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">Юридические задачи</span>
+              <span class="read-time">6 мин</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-research">📊</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Исследование</span>
+              <span class="post-date">20 мая 2025</span>
+            </div>
+            <h3>Корпоративный ИИ в 2025: как принимают решения 200 компаний</h3>
+            <p>Ключевые барьеры, мотивация и ожидания от ИИ-внедрения по данным опроса российских предприятий.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">Аналитика</span>
+              <span class="read-time">12 мин</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-guide">🧠</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Руководство</span>
+              <span class="post-date">14 мая 2025</span>
+            </div>
+            <h3>RAG для корпоративной базы знаний: как настроить и не наступить на грабли</h3>
+            <p>Разбираем архитектуру, типовые ошибки и требования к безопасности для корпоративного RAG-решения.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">Документы</span>
+              <span class="read-time">10 мин</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-news">📰</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Новости</span>
+              <span class="post-date">7 мая 2025</span>
+            </div>
+            <h3>GigaCowork 2.0: новые инструменты для управления агентами</h3>
+            <p>Что изменилось в платформе — оркестрация сценариев, расширенные логи и новые коннекторы к корпоративным системам.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">Продукт</span>
+              <span class="read-time">4 мин</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card">
+          <div class="post-card-img cat-case">💰</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-tag">Кейс</span>
+              <span class="post-date">29 апреля 2025</span>
+            </div>
+            <h3>Закрытие периода без ручных сверок: опыт финансового блока</h3>
+            <p>Как агент автоматизировал сбор данных из 1С и ERP и сократил время закрытия периода на 60%.</p>
+            <div class="post-card-footer">
+              <span class="post-tag">Финансы</span>
+              <span class="read-time">7 мин</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="btn-load-more">Загрузить ещё</button>
+      </div>
+
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="blog-sidebar">
+
+      <!-- Topics -->
+      <div class="sidebar-card">
+        <h4>Темы</h4>
+        <div class="sidebar-topics">
+          <a href="#" class="sidebar-topic">HR</a>
+          <a href="#" class="sidebar-topic">Юридические задачи</a>
+          <a href="#" class="sidebar-topic">Финансы</a>
+          <a href="#" class="sidebar-topic">Документы</a>
+          <a href="#" class="sidebar-topic">Аналитика</a>
+          <a href="#" class="sidebar-topic">Безопасность</a>
+          <a href="#" class="sidebar-topic">Интеграции</a>
+          <a href="#" class="sidebar-topic">Кейсы</a>
+          <a href="#" class="sidebar-topic">Продукт</a>
+        </div>
+      </div>
+
+      <!-- Popular -->
+      <div class="sidebar-card">
+        <h4>Читают чаще всего</h4>
+        <div class="sidebar-popular">
+          <a href="#" class="popular-item">
+            <span class="popular-num">01</span>
+            <div><h5>ФосАгро: −93% времени на скрининг кандидатов</h5><span>Кейс · 6 мин</span></div>
+          </a>
+          <a href="#" class="popular-item">
+            <span class="popular-num">02</span>
+            <div><h5>С чего начать внедрение ИИ: пошаговый план</h5><span>Руководство · 8 мин</span></div>
+          </a>
+          <a href="#" class="popular-item">
+            <span class="popular-num">03</span>
+            <div><h5>RAG для корпоративной базы знаний</h5><span>Руководство · 10 мин</span></div>
+          </a>
+          <a href="#" class="popular-item">
+            <span class="popular-num">04</span>
+            <div><h5>Корпоративный ИИ в 2025: опрос 200 компаний</h5><span>Исследование · 12 мин</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Subscribe -->
+      <div class="sidebar-card sidebar-subscribe">
+        <h4>Новые материалы на почту</h4>
+        <p>Раз в две недели — кейсы и руководства. Без рекламы.</p>
+        <form class="subscribe-form" onsubmit="return false">
+          <input type="email" placeholder="Email">
+          <button type="submit">Подписаться</button>
+        </form>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="28">
+        </div>
+        <div class="footer-contacts">
+          <a href="mailto:info@gigab2b.ru">info@gigab2b.ru</a>
+          <a href="mailto:press@gigab2b.ru">press@gigab2b.ru — для СМИ</a>
+          <a href="pomoshch.html" class="footer-help-link">Помощь и поддержка</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://t.me/gigachat_business" class="footer-tg" title="Telegram" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#229ED9"/><path d="M26.07 10.27L7.93 17.37c-1.2.47-1.19 1.12-.22 1.41l4.6 1.44 10.65-6.72c.5-.31.96-.14.58.2l-8.62 7.78-.33 4.86c.49 0 .7-.22.97-.48l2.33-2.27 4.84 3.57c.89.49 1.53.24 1.75-.82l3.17-14.94c.32-1.28-.49-1.86-1.54-1.42z" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Платформа</h6>
+        <ul>
+          <li><a href="gigacowork.html">GigaCowork</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="prostranstva.html">Пространства</a></li>
+          <li><a href="agenty.html">ИИ-агенты</a></li>
+          <li><a href="navyki.html">Навыки</a></li>
+          <li><a href="komandy.html">Быстрые команды</a></li>
+          <li><a href="integracii.html">Коннекторы</a></li>
+          <li><a href="raspisanie.html">Запуск по расписанию</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="bezopasnost.html">Безопасность</a></li>
+          <li><a href="chto-novogo.html">Что нового</a></li>
+          <li><a href="#">Документация</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Сценарии</h6>
+        <ul>
+          <li><a href="dokumenty.html">Работа с документами</a></li>
+          <li><a href="analitika.html">Аналитика и отчётность</a></li>
+          <li><a href="baza-znanii.html">База знаний</a></li>
+          <li><a href="klientskiy-servis.html">Клиентский сервис</a></li>
+          <li><a href="hr.html">HR и кадры</a></li>
+          <li><a href="finansy.html">Финансы и контроль</a></li>
+          <li><a href="yuridicheskie.html">Юридические задачи</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Поставки</h6>
+        <ul>
+          <li><a href="oblako.html">Облако</a></li>
+          <li><a href="gibrid.html">Гибрид</a></li>
+          <li><a href="pak.html">ПАК</a></li>
+          <li><a href="sravnenie.html">Сравнить варианты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Компания</h6>
+        <ul>
+          <li><a href="o-nas.html">О компании</a></li>
+          <li><a href="keysy.html">Кейсы</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="partnery.html">Партнёрам</a></li>
+          <li><a href="karera.html">Карьера</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ГигаЧат Бизнес · ООО «Салют для Бизнеса»<br>
+        121170, г. Москва, Садовая-Самотёчная ул., 24/27 · ИНН 7804568396
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+  document.querySelectorAll('.filter-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

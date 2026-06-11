@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейсы — ГигаЧат Бизнес</title>
+<meta name="description" content="Реальные результаты внедрения ИИ-агентов в корпоративные процессы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/inner-pages.css">
+<style>
+/* ── Cases page ──────────────────────────────────────── */
+.cases-hero { padding: 64px 0 52px; }
+.cases-hero .page-tag { margin-bottom: 12px; }
+.cases-hero h1 { font-size: clamp(30px, 5vw, 48px); max-width: 640px; margin-bottom: 14px; }
+.cases-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.6; }
+
+/* Hero metrics strip */
+.cases-metrics {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.cases-metric {
+  flex: 1;
+  min-width: 160px;
+  padding: 24px 28px;
+  border-right: 1px solid var(--border);
+}
+.cases-metric:last-child { border-right: none; }
+.cases-metric b { display: block; font-size: 32px; font-weight: 800; color: var(--accent); font-family: var(--font-display); line-height: 1.1; margin-bottom: 4px; }
+.cases-metric span { font-size: 13px; color: var(--muted); line-height: 1.4; display: block; max-width: 140px; }
+
+/* Filter bar */
+.cases-filters {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  background: var(--bg);
+  z-index: 80;
+}
+.cases-filters-inner {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cases-filters-inner::-webkit-scrollbar { display: none; }
+.filter-chip {
+  white-space: nowrap;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+}
+.filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+.filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Cases grid */
+.cases-section { padding: 48px 0 80px; }
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 740px) { .cases-grid { grid-template-columns: 1fr; } }
+
+/* Case card */
+.case-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .18s, transform .18s;
+}
+.case-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-3px); }
+
+/* Card image / placeholder */
+.case-card-media {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.case-card-media.ph-blue   { background: linear-gradient(135deg, #dbe8fd 0%, #b9d3fc 100%); }
+.case-card-media.ph-green  { background: linear-gradient(135deg, #d7f0e3 0%, #aadfc4 100%); }
+.case-card-media.ph-orange { background: linear-gradient(135deg, #fdecd4 0%, #f9d49b 100%); }
+.case-card-media.ph-purple { background: linear-gradient(135deg, #ede6fb 0%, #d5c6f7 100%); }
+.case-card-media.ph-red    { background: linear-gradient(135deg, #fde0e0 0%, #f9baba 100%); }
+.media-placeholder-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: .03em;
+}
+.case-logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.case-logo-placeholder {
+  width: 72px; height: 72px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.7);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+.case-company-name { font-size: 15px; font-weight: 700; color: #333; }
+
+/* Card body */
+.case-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.case-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.case-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: #f2f3f5;
+  color: var(--muted);
+}
+.case-tag.accent { background: rgba(var(--accent-rgb, 37,99,235),.08); color: var(--accent); }
+.case-card-body h3 { font-size: 16px; line-height: 1.4; margin-bottom: 10px; }
+.case-card-body p { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+
+/* Metric highlight */
+.case-card-metric {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.case-metric-num { font-size: 26px; font-weight: 800; color: var(--accent); font-family: var(--font-display); line-height: 1; }
+.case-metric-desc { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+/* Read more link */
+.case-read-more {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: auto;
+}
+.case-read-more svg { transition: transform .15s; }
+.case-card:hover .case-read-more svg { transform: translateX(4px); }
+
+/* Featured case (full-width) */
+.case-card-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.case-card-featured .case-card-media { height: auto; min-height: 280px; }
+@media (max-width: 700px) {
+  .case-card-featured { grid-template-columns: 1fr; }
+  .case-card-featured .case-card-media { height: 200px; }
+}
+
+/* CTA section */
+.cases-cta {
+  background: var(--accent);
+  border-radius: 20px;
+  padding: 56px 48px;
+  text-align: center;
+  margin: 0 0 80px;
+  color: #fff;
+}
+.cases-cta h2 { font-size: 28px; margin-bottom: 12px; }
+.cases-cta p { font-size: 16px; opacity: .85; margin-bottom: 28px; }
+.cases-cta .btn-white {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #fff;
+  color: var(--accent);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.cases-cta .btn-white:hover { opacity: .92; }
+</style>
+</head>
+<body>
+<header>
+<nav class="topbar">
+
+  <a class="logo" href="../index.html">
+    <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
+  </a>
+
+  <ul class="nav-links">
+
+    <!-- ── ПРОДУКТ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Продукт
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown product-drop">
+
+        <!-- Левая панель: hero + быстрые ссылки -->
+        <div class="drop-panel-left">
+          <a class="drop-hero" href="gigacowork.html">
+            <div class="drop-hero-logo"><img src="../Кнопка GigaCowork.png" alt="GigaCowork"></div>
+            <p>Корпоративная AI-платформа. Делегируйте задачи агентам, автоматизируйте процессы, работайте с данными внутри своего контура.</p>
+            <span class="drop-hero-link">Обзор платформы →</span>
+          </a>
+          <a class="drop-link" href="chto-novogo.html"><span class="dot"></span>Что нового</a>
+          <a class="drop-link"><span class="dot"></span>Документация</a>
+        </div>
+
+        <!-- Правая панель: возможности + GigaChat API -->
+        <div class="drop-panel-right">
+          <span class="drop-section-title">Возможности GigaCowork</span>
+          <a class="drop-item" href="prostranstva.html">
+            <div class="drop-icon di-b">🗂️</div>
+            <div class="drop-text"><strong>Рабочие пространства</strong><span>Совместная работа команды в едином AI-окружении</span></div>
+          </a>
+          <a class="drop-item" href="agenty.html">
+            <div class="drop-icon di-g">🤖</div>
+            <div class="drop-text"><strong>ИИ-агенты</strong><span>Работают автономно, решают задачи без участия человека</span></div>
+          </a>
+          <a class="drop-item" href="navyki.html">
+            <div class="drop-icon di-o">⚡</div>
+            <div class="drop-text"><strong>Навыки агентов</strong><span>Готовые и кастомные сценарии поведения агентов</span></div>
+          </a>
+          <a class="drop-item" href="komandy.html">
+            <div class="drop-icon di-g">⌨️</div>
+            <div class="drop-text"><strong>Быстрые команды</strong><span>Сохранённые запросы, которые вызываются через /</span></div>
+          </a>
+          <a class="drop-item" href="integracii.html">
+            <div class="drop-icon di-b">🔌</div>
+            <div class="drop-text"><strong>Интеграции (MCP-коннекторы)</strong><span>Подключение к ERP, CRM, BI и внутренним системам</span></div>
+          </a>
+          <a class="drop-item" href="raspisanie.html">
+            <div class="drop-icon di-p">🕐</div>
+            <div class="drop-text"><strong>Запуск по расписанию</strong><span>Автоматический запуск агентов в нужное время</span></div>
+          </a>
+
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── СЦЕНАРИИ ──────────────────── -->
+    <li>
+      <button class="nav-btn">Сценарии
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown tasks-drop">
+
+        <div class="tasks-scenarios">
+          <a class="drop-item" href="dokumenty.html">
+            <div class="drop-icon di-b">📄</div>
+            <div class="drop-text"><strong>Работа с документами</strong><span>Договор проверен за 2 мин вместо 40</span></div>
+          </a>
+          <a class="drop-item" href="analitika.html">
+            <div class="drop-icon di-o">📊</div>
+            <div class="drop-text"><strong>Аналитика и отчётность</strong><span>Еженедельный отчёт без ручной выгрузки</span></div>
+          </a>
+          <a class="drop-item" href="baza-znanii.html">
+            <div class="drop-icon di-g">🧠</div>
+            <div class="drop-text"><strong>Корпоративная база знаний</strong><span>Сотрудник спрашивает — агент отвечает по вашим регламентам</span></div>
+          </a>
+          <a class="drop-item" href="klientskiy-servis.html">
+            <div class="drop-icon di-g">🎧</div>
+            <div class="drop-text"><strong>Клиентский сервис</strong><span>40–60% обращений закрываются без оператора</span></div>
+          </a>
+          <a class="drop-item" href="hr.html">
+            <div class="drop-icon di-p">👥</div>
+            <div class="drop-text"><strong>HR и кадровые процессы</strong><span>−93% времени на поиск кандидатов</span></div>
+          </a>
+          <a class="drop-item" href="finansy.html">
+            <div class="drop-icon di-r">💰</div>
+            <div class="drop-text"><strong>Финансы и контроль</strong><span>Закрытие периода без ручных сверок</span></div>
+          </a>
+          <a class="drop-item" href="yuridicheskie.html">
+            <div class="drop-icon di-b">⚖️</div>
+            <div class="drop-text"><strong>Юридические задачи</strong><span>Юрист видит поток готовых задач, а не входящих писем</span></div>
+          </a>
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── ИНТЕГРАЦИЯ ───────────── -->
+    <li>
+      <button class="nav-btn">Поставки
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown deploy-drop">
+
+        <!-- Обзор — полная ширина -->
+        <div class="deploy-overview">
+          <div class="deploy-overview-left">
+            <strong>Подберём вариант, подходящий под требования вашей инфраструктуры и безопасности</strong>
+          </div>
+          <div class="deploy-overview-links">
+            <a class="deploy-ov-link" href="sravnenie.html">Сравнить</a>
+            <a class="deploy-ov-link primary">Оставить заявку →</a>
+          </div>
+        </div>
+
+        <a class="deploy-col" href="oblako.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-g">☁️</div>
+            <div>
+              <div class="dch-name">Облако</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Запуск без инфраструктурных затрат и настройки серверов</li>
+            <li>Защищённая облачная инфраструктура — ЦОД на территории РФ</li>
+            <li>Оптимально для быстрого старта</li>
+            <li><strong>Для команд от 100 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="gibrid.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-o">🔀</div>
+            <div>
+              <div class="dch-name">Гибрид</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Данные хранятся на ваших серверах — модель в облаке</li>
+            <li>Легко масштабируется на большие команды</li>
+            <li>Оптимальная стоимость владения при росте числа пользователей</li>
+            <li><strong>Для команд от 500 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pak.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-b">🖥️</div>
+            <div>
+              <div class="dch-name">ПАК</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Сервер в вашем контуре с предустановленным ПО и моделями</li>
+            <li>Возможна полная изоляция сети</li>
+            <li>Конфигурация софта и оборудования по запросу</li>
+            <li><strong>Безлимитное количество пользователей</strong></li>
+          </ul>
+        </a>
+
+      </div>
+    </li>
+
+    <!-- ── БЕЗОПАСНОСТЬ ───────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='bezopasnost.html'">Безопасность</button>
+    </li>
+
+    <!-- ── КЕЙСЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='keysy.html'">Кейсы</button>
+    </li>
+
+    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Материалы
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown resources-drop">
+        <div class="res-col">
+          <a class="drop-item" href="blog.html">
+            <div class="drop-icon di-p">✍️</div>
+            <div class="drop-text"><strong>Блог</strong><span>Обзоры, экспертные статьи</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-b">📖</div>
+            <div class="drop-text"><strong>Документация</strong><span>Руководства, API, интеграции</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-o">🎓</div>
+            <div class="drop-text"><strong>Курсы и академия</strong><span>Обучение команды работе с AI</span></div>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <!-- ── О НАС ─────────────────── -->
+    <li>
+      <button class="nav-btn">О компании
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown oneus-drop">
+        <div class="res-col" style="background: var(--surface);">
+          <a class="drop-link" href="o-nas.html"><span class="dot"></span>О компании</a>
+          <a class="drop-link"><span class="dot"></span>Новости</a>
+          <a class="drop-link" href="karera.html"><span class="dot"></span>Карьера</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-ghost">Связаться</button>
+    <button class="btn-primary">Попробовать</button>
+  </div>
+
+</nav>
+</header>
+
+<!-- ── Hero ──────────────────────────────────────────── -->
+<section class="cases-hero">
+  <div class="container">
+    <div class="page-tag">Кейсы</div>
+    <h1>Реальные результаты — не обещания</h1>
+    <p>Как компании используют GigaCowork в ежедневной работе. Конкретные цифры и сценарии.</p>
+    <div class="cases-metrics">
+      <div class="cases-metric"><b>81,5%</b><span>среднее сокращение времени на рутинные задачи</span></div>
+      <div class="cases-metric"><b>−93%</b><span>время на скрининг кандидатов (ФосАгро)</span></div>
+      <div class="cases-metric"><b>+80%</b><span>скорость обработки документов (АТБ)</span></div>
+      <div class="cases-metric"><b>40–60%</b><span>обращений в поддержку без участия оператора</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Filters ────────────────────────────────────────── -->
+<div class="cases-filters">
+  <div class="container">
+    <div class="cases-filters-inner">
+      <button class="filter-chip active">Все</button>
+      <button class="filter-chip">HR</button>
+      <button class="filter-chip">Юридические задачи</button>
+      <button class="filter-chip">Финансы</button>
+      <button class="filter-chip">Документы</button>
+      <button class="filter-chip">Аналитика</button>
+      <button class="filter-chip">Клиентский сервис</button>
+      <button class="filter-chip">База знаний</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Cases ─────────────────────────────────────────── -->
+<section class="cases-section">
+  <div class="container">
+    <div class="cases-grid">
+
+      <!-- Featured -->
+      <a href="hr.html" class="case-card case-card-featured">
+        <div class="case-card-media ph-blue">
+          <div class="case-logo-area">
+            <div class="case-logo-placeholder">🌿</div>
+            <span class="case-company-name">ФосАгро</span>
+          </div>
+          <span class="media-placeholder-label">Видео-кейс · скоро</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-tags">
+            <span class="case-tag accent">HR</span>
+            <span class="case-tag">Скрининг резюме</span>
+            <span class="case-tag">Онбординг</span>
+          </div>
+          <h3>ФосАгро: автоматизация HR — от скрининга резюме до ответов на вопросы сотрудников</h3>
+          <p>Рекрутеры тратили 2–3 часа на разбор откликов по одной вакансии. Агент сократил это до 10 минут и стал отвечать на типовые вопросы сотрудников круглосуточно.</p>
+          <div class="case-card-metric">
+            <span class="case-metric-num">−93%</span>
+            <span class="case-metric-desc">времени на скрининг кандидатов</span>
+          </div>
+          <span class="case-read-more">Читать кейс <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ATB -->
+      <a href="dokumenty.html" class="case-card">
+        <div class="case-card-media ph-orange">
+          <div class="case-logo-area">
+            <div class="case-logo-placeholder">🏦</div>
+            <span class="case-company-name">АТБ</span>
+          </div>
+          <span class="media-placeholder-label">Иллюстрация · скоро</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-tags">
+            <span class="case-tag accent">Юридические задачи</span>
+            <span class="case-tag">Документы</span>
+          </div>
+          <h3>АТБ: проверка договоров за 2 минуты вместо 40</h3>
+          <p>Юридический отдел автоматизировал первичную проверку входящих договоров. Агент выделяет риски и нестандартные условия.</p>
+          <div class="case-card-metric">
+            <span class="case-metric-num">+80%</span>
+            <span class="case-metric-desc">скорость обработки документов</span>
+          </div>
+          <span class="case-read-more">Читать кейс <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <!-- Placeholder 1 -->
+      <div class="case-card" style="cursor:default;">
+        <div class="case-card-media ph-green">
+          <div class="case-logo-area">
+            <div class="case-logo-placeholder">🏭</div>
+            <span class="case-company-name">Компания N</span>
+          </div>
+          <span class="media-placeholder-label">Кейс готовится</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-tags">
+            <span class="case-tag accent">Финансы</span>
+            <span class="case-tag">Аналитика</span>
+          </div>
+          <h3>Автоматизация закрытия периода и подготовки отчёт для руководства</h3>
+          <p>Агент собирает данные из 1С и ERP, сверяет расхождения и готовит отчёт для руководства без участия аналитика.</p>
+          <div class="case-card-metric">
+            <span class="case-metric-num">−60%</span>
+            <span class="case-metric-desc">время закрытия отчётного периода</span>
+          </div>
+          <span class="case-read-more" style="opacity:.4;">Скоро</span>
+        </div>
+      </div>
+
+      <!-- Placeholder 2 -->
+      <div class="case-card" style="cursor:default;">
+        <div class="case-card-media ph-purple">
+          <div class="case-logo-area">
+            <div class="case-logo-placeholder">🛒</div>
+            <span class="case-company-name">Ритейлер</span>
+          </div>
+          <span class="media-placeholder-label">Кейс готовится</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-tags">
+            <span class="case-tag accent">Клиентский сервис</span>
+          </div>
+          <h3>Первая линия поддержки: 40–60% обращений без оператора</h3>
+          <p>Агент классифицирует входящие обращения, отвечает на типовые вопросы и передаёт сложные случаи специалисту с полным контекстом.</p>
+          <div class="case-card-metric">
+            <span class="case-metric-num">×4</span>
+            <span class="case-metric-desc">быстрее среднее время ответа клиенту</span>
+          </div>
+          <span class="case-read-more" style="opacity:.4;">Скоро</span>
+        </div>
+      </div>
+
+      <!-- Placeholder 3 -->
+      <div class="case-card" style="cursor:default;">
+        <div class="case-card-media ph-red">
+          <div class="case-logo-area">
+            <div class="case-logo-placeholder">⚡</div>
+            <span class="case-company-name">Энергетика</span>
+          </div>
+          <span class="media-placeholder-label">Кейс готовится</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-tags">
+            <span class="case-tag accent">База знаний</span>
+            <span class="case-tag">Онбординг</span>
+          </div>
+          <h3>Корпоративная база знаний: −70% вопросов в HR и IT поддержку</h3>
+          <p>Агент индексирует регламенты и инструкции компании. Сотрудники задают вопросы в чат и получают ответ со ссылкой на источник за секунды.</p>
+          <div class="case-card-metric">
+            <span class="case-metric-num">×3</span>
+            <span class="case-metric-desc">быстрее онбординг новых сотрудников</span>
+          </div>
+          <span class="case-read-more" style="opacity:.4;">Скоро</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────── -->
+<div class="container">
+  <div class="cases-cta">
+    <h2>Хотите такой же результат?</h2>
+    <p>Расскажите о задаче — покажем, как это решается на вашем процессе.</p>
+    <a href="mailto:info@gigab2b.ru" class="btn-white">Обсудить проект</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="28">
+        </div>
+        <div class="footer-contacts">
+          <a href="mailto:info@gigab2b.ru">info@gigab2b.ru</a>
+          <a href="mailto:press@gigab2b.ru">press@gigab2b.ru — для СМИ</a>
+          <a href="pomoshch.html" class="footer-help-link">Помощь и поддержка</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://t.me/gigachat_business" class="footer-tg" title="Telegram" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#229ED9"/><path d="M26.07 10.27L7.93 17.37c-1.2.47-1.19 1.12-.22 1.41l4.6 1.44 10.65-6.72c.5-.31.96-.14.58.2l-8.62 7.78-.33 4.86c.49 0 .7-.22.97-.48l2.33-2.27 4.84 3.57c.89.49 1.53.24 1.75-.82l3.17-14.94c.32-1.28-.49-1.86-1.54-1.42z" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Платформа</h6>
+        <ul>
+          <li><a href="gigacowork.html">GigaCowork</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="prostranstva.html">Пространства</a></li>
+          <li><a href="agenty.html">ИИ-агенты</a></li>
+          <li><a href="navyki.html">Навыки</a></li>
+          <li><a href="komandy.html">Быстрые команды</a></li>
+          <li><a href="integracii.html">Коннекторы</a></li>
+          <li><a href="raspisanie.html">Запуск по расписанию</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="bezopasnost.html">Безопасность</a></li>
+          <li><a href="chto-novogo.html">Что нового</a></li>
+          <li><a href="#">Документация</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Сценарии</h6>
+        <ul>
+          <li><a href="dokumenty.html">Работа с документами</a></li>
+          <li><a href="analitika.html">Аналитика и отчётность</a></li>
+          <li><a href="baza-znanii.html">База знаний</a></li>
+          <li><a href="klientskiy-servis.html">Клиентский сервис</a></li>
+          <li><a href="hr.html">HR и кадры</a></li>
+          <li><a href="finansy.html">Финансы и контроль</a></li>
+          <li><a href="yuridicheskie.html">Юридические задачи</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Поставки</h6>
+        <ul>
+          <li><a href="oblako.html">Облако</a></li>
+          <li><a href="gibrid.html">Гибрид</a></li>
+          <li><a href="pak.html">ПАК</a></li>
+          <li><a href="sravnenie.html">Сравнить варианты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Компания</h6>
+        <ul>
+          <li><a href="o-nas.html">О компании</a></li>
+          <li><a href="keysy.html">Кейсы</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="partnery.html">Партнёрам</a></li>
+          <li><a href="karera.html">Карьера</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ГигаЧат Бизнес · ООО «Салют для Бизнеса»<br>
+        121170, г. Москва, Садовая-Самотёчная ул., 24/27 · ИНН 7804568396
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+  document.querySelectorAll('.filter-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

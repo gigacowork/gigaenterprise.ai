@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Что нового в GigaCowork — релиз 26.6.1 | ГигаЧат Бизнес</title>
+<meta name="description" content="Первый релиз GigaCowork: универсальный агент, задачи, навыки, команды, пространства и готовые коннекторы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/inner-pages.css">
+<style>
+/* ── Release notes ───────────────────────────────────── */
+.rn-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); }
+.rn-hero__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-lt); border: 1px solid rgba(0,184,107,0.25);
+  border-radius: 100px; padding: 6px 14px;
+  font-size: 13px; font-weight: 500; color: var(--accent-dk); margin-bottom: 20px;
+}
+.rn-hero__badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.rn-hero h1 { font-size: clamp(32px, 5vw, 44px); margin-bottom: 16px; }
+.rn-hero__meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.rn-hero__version {
+  font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); padding: 4px 12px; border-radius: 6px;
+}
+.rn-hero__date { font-size: 14px; color: var(--muted); }
+
+.rn-body {
+  display: grid; grid-template-columns: 220px 1fr; column-gap: 64px;
+  padding: 56px 0 100px; align-items: start;
+}
+@media (max-width: 900px) {
+  .rn-body { grid-template-columns: 1fr; }
+  .rn-toc { display: none; }
+}
+
+.rn-toc { position: sticky; top: 90px; }
+.rn-toc__label {
+  font-size: 10px; font-family: var(--mono); font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted2); margin: 0 0 14px;
+}
+.rn-toc__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.rn-toc__item a {
+  display: block; font-size: 14px; color: var(--muted); text-decoration: none;
+  padding: 6px 10px; border-radius: 8px; line-height: 1.4;
+  transition: background 0.15s, color 0.15s;
+}
+.rn-toc__item a:hover { background: var(--surface); color: var(--text); }
+.rn-toc__item a.is-active { background: var(--surface); color: var(--text); font-weight: 500; }
+
+.rn-content { min-width: 0; }
+.rn-intro { font-size: 17px; line-height: 1.6; color: var(--muted); margin: 0 0 56px; max-width: 680px; }
+
+.rn-section { padding-bottom: 56px; border-bottom: 1px solid var(--border); margin-bottom: 56px; scroll-margin-top: 100px; }
+.rn-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.rn-section__header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.rn-section__icon {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--accent-lt);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.rn-section__icon svg { width: 20px; height: 20px; fill: none; stroke: var(--accent-dk); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rn-section__title { font-size: 24px; font-weight: 700; color: var(--text); margin: 0; }
+.rn-section__desc { font-size: 15px; line-height: 1.65; color: var(--muted); margin: 0; max-width: 680px; }
+.rn-inline-link { color: var(--accent-dk); text-decoration: none; border-bottom: 1px solid rgba(0,184,107,0.35); }
+.rn-inline-link:hover { border-bottom-color: var(--accent-dk); }
+
+.rn-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 680px; }
+.rn-list__item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.rn-list__bullet { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
+
+.rn-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; max-width: 680px; }
+.rn-card__title { font-size: 14px; font-weight: 600; color: var(--text); margin: 0; }
+
+.rn-code { background: var(--surface); border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px; font-family: var(--mono); font-size: 13px; }
+
+.rn-spaces { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 680px; }
+@media (max-width: 640px) { .rn-spaces { grid-template-columns: 1fr; } }
+.rn-space-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+.rn-space-card__tag {
+  display: inline-block; font-size: 10px; font-family: var(--mono); font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-dk);
+  background: var(--accent-lt); border-radius: 20px; padding: 2px 9px; margin: 0 0 10px;
+}
+.rn-space-card__desc { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+
+.rn-kit { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; max-width: 680px; }
+.rn-kit-item {
+  display: flex; align-items: center; gap: 14px; background: var(--white);
+  border: 1px solid var(--border-md); border-radius: 12px; padding: 13px 16px;
+  font-size: 14px; color: var(--muted);
+}
+.rn-kit-item__ext {
+  font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+  padding: 3px 9px; flex-shrink: 0; white-space: nowrap;
+}
+
+.rn-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 8px; max-width: 680px; }
+@media (max-width: 640px) { .rn-stats { grid-template-columns: 1fr; } }
+.rn-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.rn-stat__value { font-size: 32px; font-weight: 800; color: var(--text); margin: 0 0 4px; line-height: 1; }
+.rn-stat__label { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.45; }
+
+.rn-connectors-group { margin-top: 28px; max-width: 680px; }
+.rn-connectors-group__title {
+  font-size: 10px; font-family: var(--mono); font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted2); margin: 0 0 12px;
+}
+.rn-connectors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 640px) { .rn-connectors-grid { grid-template-columns: 1fr; } }
+.rn-connector {
+  display: flex; align-items: flex-start; gap: 11px;
+  background: var(--white); border: 1px solid var(--border-md); border-radius: 12px; padding: 13px 15px;
+}
+.rn-connector__check {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--accent-lt);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.rn-connector__check svg { width: 10px; height: 10px; fill: none; stroke: var(--accent-dk); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rn-connector__name { font-size: 14px; font-weight: 600; color: var(--text); margin: 0 0 2px; }
+.rn-connector__note { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+.rn-warning {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--orange-lt, #fff7e6); border: 1px solid rgba(245,158,11,0.35);
+  border-radius: 12px; padding: 14px 18px; margin: 48px 0 24px;
+  font-size: 14px; line-height: 1.55; color: #7a5a00;
+}
+.rn-warning a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+.rn-cta {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+  padding: 32px; margin-top: 8px;
+}
+.rn-cta__title { font-size: 20px; font-weight: 700; color: var(--text); margin: 0 0 8px; }
+.rn-cta__desc { font-size: 14.5px; line-height: 1.6; color: var(--muted); margin: 0 0 20px; max-width: 560px; }
+</style>
+</head>
+<body>
+<header>
+<nav class="topbar">
+
+  <a class="logo" href="../index.html">
+    <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
+  </a>
+
+  <ul class="nav-links">
+
+    <!-- ── ПРОДУКТ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Продукт
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown product-drop">
+
+        <!-- Левая панель: hero + быстрые ссылки -->
+        <div class="drop-panel-left">
+          <a class="drop-hero" href="gigacowork.html">
+            <div class="drop-hero-logo"><img src="../Кнопка GigaCowork.png" alt="GigaCowork"></div>
+            <p>Корпоративная AI-платформа. Делегируйте задачи агентам, автоматизируйте процессы, работайте с данными внутри своего контура.</p>
+            <span class="drop-hero-link">Обзор платформы →</span>
+          </a>
+          <a class="drop-link" href="chto-novogo.html"><span class="dot"></span>Что нового</a>
+          <a class="drop-link"><span class="dot"></span>Документация</a>
+        </div>
+
+        <!-- Правая панель: возможности + GigaChat API -->
+        <div class="drop-panel-right">
+          <span class="drop-section-title">Возможности GigaCowork</span>
+          <a class="drop-item" href="prostranstva.html">
+            <div class="drop-icon di-b">🗂️</div>
+            <div class="drop-text"><strong>Рабочие пространства</strong><span>Совместная работа команды в едином AI-окружении</span></div>
+          </a>
+          <a class="drop-item" href="agenty.html">
+            <div class="drop-icon di-g">🤖</div>
+            <div class="drop-text"><strong>ИИ-агенты</strong><span>Работают автономно, решают задачи без участия человека</span></div>
+          </a>
+          <a class="drop-item" href="navyki.html">
+            <div class="drop-icon di-o">⚡</div>
+            <div class="drop-text"><strong>Навыки агентов</strong><span>Готовые и кастомные сценарии поведения агентов</span></div>
+          </a>
+          <a class="drop-item" href="komandy.html">
+            <div class="drop-icon di-g">⌨️</div>
+            <div class="drop-text"><strong>Быстрые команды</strong><span>Сохранённые запросы, которые вызываются через /</span></div>
+          </a>
+          <a class="drop-item" href="integracii.html">
+            <div class="drop-icon di-b">🔌</div>
+            <div class="drop-text"><strong>Интеграции (MCP-коннекторы)</strong><span>Подключение к ERP, CRM, BI и внутренним системам</span></div>
+          </a>
+          <a class="drop-item" href="raspisanie.html">
+            <div class="drop-icon di-p">🕐</div>
+            <div class="drop-text"><strong>Запуск по расписанию</strong><span>Автоматический запуск агентов в нужное время</span></div>
+          </a>
+
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── СЦЕНАРИИ ──────────────────── -->
+    <li>
+      <button class="nav-btn">Сценарии
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown tasks-drop">
+
+        <div class="tasks-scenarios">
+          <a class="drop-item" href="dokumenty.html">
+            <div class="drop-icon di-b">📄</div>
+            <div class="drop-text"><strong>Работа с документами</strong><span>Договор проверен за 2 мин вместо 40</span></div>
+          </a>
+          <a class="drop-item" href="analitika.html">
+            <div class="drop-icon di-o">📊</div>
+            <div class="drop-text"><strong>Аналитика и отчётность</strong><span>Еженедельный отчёт без ручной выгрузки</span></div>
+          </a>
+          <a class="drop-item" href="baza-znanii.html">
+            <div class="drop-icon di-g">🧠</div>
+            <div class="drop-text"><strong>Корпоративная база знаний</strong><span>Сотрудник спрашивает — агент отвечает по вашим регламентам</span></div>
+          </a>
+          <a class="drop-item" href="klientskiy-servis.html">
+            <div class="drop-icon di-g">🎧</div>
+            <div class="drop-text"><strong>Клиентский сервис</strong><span>40–60% обращений закрываются без оператора</span></div>
+          </a>
+          <a class="drop-item" href="hr.html">
+            <div class="drop-icon di-p">👥</div>
+            <div class="drop-text"><strong>HR и кадровые процессы</strong><span>−93% времени на поиск кандидатов</span></div>
+          </a>
+          <a class="drop-item" href="finansy.html">
+            <div class="drop-icon di-r">💰</div>
+            <div class="drop-text"><strong>Финансы и контроль</strong><span>Закрытие периода без ручных сверок</span></div>
+          </a>
+          <a class="drop-item" href="yuridicheskie.html">
+            <div class="drop-icon di-b">⚖️</div>
+            <div class="drop-text"><strong>Юридические задачи</strong><span>Юрист видит поток готовых задач, а не входящих писем</span></div>
+          </a>
+        </div>
+
+      </div>
+    </li>
+
+    <!-- ── ИНТЕГРАЦИЯ ───────────── -->
+    <li>
+      <button class="nav-btn">Поставки
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown deploy-drop">
+
+        <!-- Обзор — полная ширина -->
+        <div class="deploy-overview">
+          <div class="deploy-overview-left">
+            <strong>Подберём вариант, подходящий под требования вашей инфраструктуры и безопасности</strong>
+          </div>
+          <div class="deploy-overview-links">
+            <a class="deploy-ov-link" href="sravnenie.html">Сравнить</a>
+            <a class="deploy-ov-link primary">Оставить заявку →</a>
+          </div>
+        </div>
+
+        <a class="deploy-col" href="oblako.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-g">☁️</div>
+            <div>
+              <div class="dch-name">Облако</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Запуск без инфраструктурных затрат и настройки серверов</li>
+            <li>Защищённая облачная инфраструктура — ЦОД на территории РФ</li>
+            <li>Оптимально для быстрого старта</li>
+            <li><strong>Для команд от 100 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="gibrid.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-o">🔀</div>
+            <div>
+              <div class="dch-name">Гибрид</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Данные хранятся на ваших серверах — модель в облаке</li>
+            <li>Легко масштабируется на большие команды</li>
+            <li>Оптимальная стоимость владения при росте числа пользователей</li>
+            <li><strong>Для команд от 500 пользователей</strong></li>
+          </ul>
+        </a>
+
+        <a class="deploy-col" href="pak.html">
+          <div class="deploy-col-head">
+            <div class="deploy-col-icon di-b">🖥️</div>
+            <div>
+              <div class="dch-name">ПАК</div>
+            </div>
+          </div>
+          <ul class="deploy-list">
+            <li>Сервер в вашем контуре с предустановленным ПО и моделями</li>
+            <li>Возможна полная изоляция сети</li>
+            <li>Конфигурация софта и оборудования по запросу</li>
+            <li><strong>Безлимитное количество пользователей</strong></li>
+          </ul>
+        </a>
+
+      </div>
+    </li>
+
+    <!-- ── БЕЗОПАСНОСТЬ ───────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='bezopasnost.html'">Безопасность</button>
+    </li>
+
+    <!-- ── КЕЙСЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn" onclick="location.href='keysy.html'">Кейсы</button>
+    </li>
+
+    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+    <li>
+      <button class="nav-btn">Материалы
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown resources-drop">
+        <div class="res-col">
+          <a class="drop-item" href="blog.html">
+            <div class="drop-icon di-p">✍️</div>
+            <div class="drop-text"><strong>Блог</strong><span>Обзоры, экспертные статьи</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-b">📖</div>
+            <div class="drop-text"><strong>Документация</strong><span>Руководства, API, интеграции</span></div>
+          </a>
+        </div>
+        <div class="res-col">
+          <a class="drop-item">
+            <div class="drop-icon di-o">🎓</div>
+            <div class="drop-text"><strong>Курсы и академия</strong><span>Обучение команды работе с AI</span></div>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <!-- ── О НАС ─────────────────── -->
+    <li>
+      <button class="nav-btn">О компании
+        <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="dropdown oneus-drop">
+        <div class="res-col" style="background: var(--surface);">
+          <a class="drop-link" href="o-nas.html"><span class="dot"></span>О компании</a>
+          <a class="drop-link"><span class="dot"></span>Новости</a>
+          <a class="drop-link" href="karera.html"><span class="dot"></span>Карьера</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-ghost">Связаться</button>
+    <button class="btn-primary">Попробовать</button>
+  </div>
+
+</nav>
+</header>
+
+
+<!-- ── Hero ───────────────────────────────────────────── -->
+<section class="rn-hero">
+  <div class="container">
+    <div class="rn-hero__badge"><span class="rn-hero__badge-dot"></span>Первый релиз</div>
+    <h1>Что нового в GigaCowork</h1>
+    <div class="rn-hero__meta">
+      <span class="rn-hero__version">Версия 26.6.1</span>
+      <span class="rn-hero__date">4 июня 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Body ───────────────────────────────────────────── -->
+<div class="container">
+  <div class="rn-body">
+
+    <aside class="rn-toc">
+      <p class="rn-toc__label">Содержание</p>
+      <ul class="rn-toc__list">
+        <li class="rn-toc__item"><a href="#section-agent">Универсальный агент</a></li>
+        <li class="rn-toc__item"><a href="#section-tasks">Задачи</a></li>
+        <li class="rn-toc__item"><a href="#section-skills">Навыки</a></li>
+        <li class="rn-toc__item"><a href="#section-commands">Команды</a></li>
+        <li class="rn-toc__item"><a href="#section-spaces">Пространства</a></li>
+        <li class="rn-toc__item"><a href="#section-kit">Стартовый набор</a></li>
+        <li class="rn-toc__item"><a href="#section-connectors">Коннекторы</a></li>
+      </ul>
+    </aside>
+
+    <main class="rn-content">
+
+      <p class="rn-intro">
+        Представляем первый релиз GigaCowork — платформы ИИ-агентов для всей компании. Это ранняя версия продукта, в которую мы заложили самое основное для решения повседневных и сложных бизнес-задач: от анализа документов до автоматизации повторяющихся сценариев.
+      </p>
+
+      <!-- 1. Универсальный агент -->
+      <section class="rn-section" id="section-agent">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <h2 class="rn-section__title">Универсальный агент</h2>
+        </div>
+        <p class="rn-section__desc">
+          Это агент с универсальными знаниями, с которым можно работать в любых <a class="rn-inline-link" href="prostranstva.html">пространствах</a>. Он может выполнять разные задачи, для этого:
+        </p>
+        <ul class="rn-list">
+          <li class="rn-list__item"><span class="rn-list__bullet"></span><span>дополнительно активирует <a class="rn-inline-link" href="navyki.html">навыки</a>, доступные пользователю</span></li>
+          <li class="rn-list__item"><span class="rn-list__bullet"></span><span>использует документы из сессии или пространства как дополнительный контекст</span></li>
+          <li class="rn-list__item"><span class="rn-list__bullet"></span><span>исполняет команду по инструкции</span></li>
+        </ul>
+        <p class="rn-section__desc" style="margin-top: 16px;">
+          В каждой сессии формируется свой изолированный контекст для работы универсального агента.
+        </p>
+      </section>
+
+      <!-- 2. Задачи -->
+      <section class="rn-section" id="section-tasks">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/><path d="M8 16l2 2 4-4"/></svg></div>
+          <h2 class="rn-section__title">Задачи</h2>
+        </div>
+        <p class="rn-section__desc">Агент начинает работу при постановке задачи. При создании каждой задачи запускается изолированная сессия.</p>
+        <p class="rn-section__desc" style="margin-top: 12px;">В задачах предусмотрена работа с документами:</p>
+        <ul class="rn-list">
+          <li class="rn-list__item"><span class="rn-list__bullet"></span><span>можно прикреплять файлы и папки к сообщению, чтобы система анализировала их в рамках текущей задачи;</span></li>
+          <li class="rn-list__item"><span class="rn-list__bullet"></span><span>все созданные ИИ-документы (таблицы, отчеты, тексты) сохраняются в панели компонентов справа и доступны для скачивания.</span></li>
+        </ul>
+        <p class="rn-section__desc" style="margin-top: 16px;">Ход выполнения задачи отображается в панели отслеживания прогресса прямо внутри задачи.</p>
+        <p class="rn-section__desc" style="margin-top: 12px;">Вся история работы с задачами сохраняется и доступна в полном виде. Можно в любой момент просмотреть задачу, найти нужную информацию. И даже если задача решена, в сессию по ней можно вернуться и что-то доделать.</p>
+      </section>
+
+      <!-- 3. Навыки -->
+      <section class="rn-section" id="section-skills">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
+          <h2 class="rn-section__title">Навыки</h2>
+        </div>
+        <p class="rn-section__desc">
+          Навыки — описанные обычными словами инструкции, по которым агент выполняет конкретные задачи. По навыку агент определяет способ выполнения задачи: например, как оформлять документы в фирменном стиле, каким образом анализировать продажи или предложения поставщиков.
+        </p>
+        <p class="rn-section__desc" style="margin-top: 12px;">Создавать и изменять навыки можно двумя способами: написать инструкцию или загрузить готовый файл с описанием.</p>
+        <div class="rn-card" style="margin-top: 20px;">
+          <p class="rn-card__title" style="margin-bottom: 14px;">Применение навыков агентами</p>
+          <ul class="rn-list" style="margin-top: 0;">
+            <li class="rn-list__item"><span class="rn-list__bullet"></span><span>Агент сам подбирает нужный из доступных в сессии навык по описанию, но при необходимости вы можете явно указать его в запросе задачи.</span></li>
+            <li class="rn-list__item"><span class="rn-list__bullet"></span><span>Если в навыке необходимо использование <a class="rn-inline-link" href="integracii.html">коннектора</a> для интеграции с какой-либо системой или сервисом — достаточно указать название коннектора в описании инструкции.</span></li>
+            <li class="rn-list__item"><span class="rn-list__bullet"></span><span>При необходимости в навыке можно выполнять Python-скрипты, но есть ограничения по безопасности.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. Команды -->
+      <section class="rn-section" id="section-commands">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+          <h2 class="rn-section__title">Команды (/-команды)</h2>
+        </div>
+        <p class="rn-section__desc">
+          Команда — это сохраненный запрос с инструкцией. Если вы часто делаете одинаковые запросы к агентам, удобнее сохранить его в команду и вызывать при необходимости. В команде можно прописать подключение коннектора, запрос данных, расчет метрик и формат вывода — любые повторяющиеся действия.
+        </p>
+        <p class="rn-section__desc" style="margin-top: 12px;">
+          Вызвать команду очень просто — достаточно ввести <code class="rn-code">/</code> в поле ввода или нажать кнопку «Вызвать команду или навык». Появится весь список команд, нужно выбрать подходящую.
+        </p>
+      </section>
+
+      <!-- 5. Пространства -->
+      <section class="rn-section" id="section-spaces">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></div>
+          <h2 class="rn-section__title">Пространства</h2>
+        </div>
+        <p class="rn-section__desc">
+          Пространства — это изолированные рабочие среды для отделов и команд с собственными агентами, документами и правилами доступа. Внутри пространства сохраняется весь контекст: документы, навыки, задачи и сессии.
+        </p>
+        <p class="rn-section__desc" style="margin-top: 20px; font-weight: 500; color: var(--text);">Пространство может быть</p>
+        <div class="rn-spaces" style="margin-top: 12px;">
+          <div class="rn-space-card">
+            <p class="rn-space-card__tag">Личное</p>
+            <p class="rn-space-card__desc">Пользователь создает его сам для себя. Документы и настройки видны только ему.</p>
+          </div>
+          <div class="rn-space-card">
+            <p class="rn-space-card__tag">Командное</p>
+            <p class="rn-space-card__desc">Пространство для совместной работы, в которое можно добавлять участников. Документы и навыки становятся доступны всей команде.</p>
+          </div>
+        </div>
+        <p class="rn-section__desc" style="margin-top: 20px;">
+          Пространство можно настраивать и адаптировать под конкретные сценарии использования, добавляя контекст в виде документов, новых агентов или навыков и коннекторов.
+        </p>
+      </section>
+
+      <!-- 6. Стартовый набор -->
+      <section class="rn-section" id="section-kit">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <h2 class="rn-section__title">Стартовый набор инструментов</h2>
+        </div>
+        <p class="rn-section__desc">
+          В платформе уже предусмотрен набор готовых инструментов и навыков для работы с файлами и поиска информации, описывать и настраивать их дополнительно не нужно.
+        </p>
+        <div class="rn-kit">
+          <div class="rn-kit-item"><span class="rn-kit-item__ext">Поиск</span>Полнотекстовый поиск по документам</div>
+          <div class="rn-kit-item"><span class="rn-kit-item__ext">Индекс</span>Индексация документов и поиск по индексированной базе</div>
+          <div class="rn-kit-item"><span class="rn-kit-item__ext">PDF&nbsp;·&nbsp;DOCX&nbsp;·&nbsp;XLSX&nbsp;·&nbsp;PPTX</span>Распознавание, генерация, суммаризация файлов</div>
+        </div>
+      </section>
+
+      <!-- 7. Коннекторы -->
+      <section class="rn-section" id="section-connectors">
+        <div class="rn-section__header">
+          <div class="rn-section__icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+          <h2 class="rn-section__title">Коннекторы для внешних систем</h2>
+        </div>
+        <p class="rn-section__desc">
+          Коннекторы — безопасные подключения к внешним и корпоративным системам (CRM, ERP, почта, файловые хранилища, папки и документы) по протоколу Model Context Protocol (MCP). Он позволяет быстро расширять набор поддерживаемых систем без доработок действующей ИТ-инфраструктуры. Коннекторы настраиваются администратором один раз, а пользователи сами подключают необходимые для выполнения задачи, нажимая кнопку в окне чата.
+        </p>
+
+        <div class="rn-stats">
+          <div class="rn-stat"><p class="rn-stat__value">17</p><p class="rn-stat__label">коннекторов доступно</p></div>
+          <div class="rn-stat"><p class="rn-stat__value">49</p><p class="rn-stat__label">коннекторов планируем подключить в 2026</p></div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">Поиск в интернете</p>
+          <div class="rn-connectors-grid" style="grid-template-columns: 1fr;">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Веб-поиск</p><p class="rn-connector__note">Поиск в интернете и парсинг ссылок — без ограничений (альфа-режим)</p></div></div>
+          </div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">Почта и календарь</p>
+          <div class="rn-connectors-grid">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Яндекс Почта</p><p class="rn-connector__note">Отправка, чтение одного письма</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Microsoft Outlook</p><p class="rn-connector__note">Письма, черновики, контакты, события</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Gmail</p><p class="rn-connector__note">Отправка, черновики, чтение одного письма</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Google Calendar</p><p class="rn-connector__note">Создание, обновление и поиск событий</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Mail.ru</p><p class="rn-connector__note">Отправка писем по SMTP</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Почта (SMTP)</p><p class="rn-connector__note">Универсальная отправка через SMTP</p></div></div>
+          </div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">Коммуникации и встречи</p>
+          <div class="rn-connectors-grid">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Zoom</p><p class="rn-connector__note">Конференции и вебинары (альфа)</p></div></div>
+          </div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">CRM, продажи и маркетинг</p>
+          <div class="rn-connectors-grid">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">1С</p><p class="rn-connector__note">Журналы, метаданные, запросы (демо-режим)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">amoCRM</p><p class="rn-connector__note">Сделки, контакты, задачи, звонки (альфа)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Битрикс24</p><p class="rn-connector__note">Лиды, сделки, задачи, хранилище (альфа)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Кайтен</p><p class="rn-connector__note">Карточки, комментарии (альфа)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">ПланФакт</p><p class="rn-connector__note">Операции, сделки, проекты (альфа)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">МойСклад</p><p class="rn-connector__note">Заказы, товары, контрагенты (альфа)</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Мое дело</p><p class="rn-connector__note">Контрагенты, счета, заказы (альфа)</p></div></div>
+          </div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">Файловые хранилища</p>
+          <div class="rn-connectors-grid">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Яндекс Диск</p><p class="rn-connector__note">Файлы, папки, публикация</p></div></div>
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Google Drive</p><p class="rn-connector__note">Файлы, папки, комментарии</p></div></div>
+          </div>
+        </div>
+
+        <div class="rn-connectors-group">
+          <p class="rn-connectors-group__title">Поддержка клиентов</p>
+          <div class="rn-connectors-grid">
+            <div class="rn-connector"><div class="rn-connector__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><div><p class="rn-connector__name">Юздеск</p><p class="rn-connector__note">Тикеты, клиенты, чат (альфа)</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="rn-warning">
+        <span>⚠</span>
+        <span>Мы хотели как можно быстрее сделать GigaCowork доступным для всех, поэтому открыли доступ на этапе раннего тестирования. Возможно, где-то будут сложности и ошибки, но вместе мы сможем все быстро их найти и устранить — поэтому присылайте обратную связь на <a href="mailto:support-demo@gigab2b.ru">support-demo@gigab2b.ru</a></span>
+      </div>
+
+      <div class="rn-cta">
+        <p class="rn-cta__title">Начните использовать GigaCowork уже сегодня</p>
+        <p class="rn-cta__desc">Мы хотим, чтобы технологии снижали нагрузку на сотрудников и упрощали работу всей компании, поэтому описываем и обучаем разным сценариям использования ИИ-агентов.</p>
+        <a class="btn-primary" style="text-decoration: none; display: inline-block;" href="gigacowork.html">Обзор платформы</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="28">
+        </div>
+        <div class="footer-contacts">
+          <a href="mailto:info@gigab2b.ru">info@gigab2b.ru</a>
+          <a href="mailto:press@gigab2b.ru">press@gigab2b.ru — для СМИ</a>
+          <a href="pomoshch.html" class="footer-help-link">Помощь и поддержка</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://t.me/gigachat_business" class="footer-tg" title="Telegram" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#229ED9"/><path d="M26.07 10.27L7.93 17.37c-1.2.47-1.19 1.12-.22 1.41l4.6 1.44 10.65-6.72c.5-.31.96-.14.58.2l-8.62 7.78-.33 4.86c.49 0 .7-.22.97-.48l2.33-2.27 4.84 3.57c.89.49 1.53.24 1.75-.82l3.17-14.94c.32-1.28-.49-1.86-1.54-1.42z" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Платформа</h6>
+        <ul>
+          <li><a href="gigacowork.html">GigaCowork</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="prostranstva.html">Пространства</a></li>
+          <li><a href="agenty.html">ИИ-агенты</a></li>
+          <li><a href="navyki.html">Навыки</a></li>
+          <li><a href="komandy.html">Быстрые команды</a></li>
+          <li><a href="integracii.html">Коннекторы</a></li>
+          <li><a href="raspisanie.html">Запуск по расписанию</a></li>
+          <li class="footer-divider"></li>
+          <li><a href="bezopasnost.html">Безопасность</a></li>
+          <li><a href="chto-novogo.html">Что нового</a></li>
+          <li><a href="#">Документация</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Сценарии</h6>
+        <ul>
+          <li><a href="dokumenty.html">Работа с документами</a></li>
+          <li><a href="analitika.html">Аналитика и отчётность</a></li>
+          <li><a href="baza-znanii.html">База знаний</a></li>
+          <li><a href="klientskiy-servis.html">Клиентский сервис</a></li>
+          <li><a href="hr.html">HR и кадры</a></li>
+          <li><a href="finansy.html">Финансы и контроль</a></li>
+          <li><a href="yuridicheskie.html">Юридические задачи</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Поставки</h6>
+        <ul>
+          <li><a href="oblako.html">Облако</a></li>
+          <li><a href="gibrid.html">Гибрид</a></li>
+          <li><a href="pak.html">ПАК</a></li>
+          <li><a href="sravnenie.html">Сравнить варианты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Компания</h6>
+        <ul>
+          <li><a href="o-nas.html">О компании</a></li>
+          <li><a href="keysy.html">Кейсы</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="partnery.html">Партнёрам</a></li>
+          <li><a href="karera.html">Карьера</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ГигаЧат Бизнес · ООО «Салют для Бизнеса»<br>
+        121170, г. Москва, Садовая-Самотёчная ул., 24/27 · ИНН 7804568396
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  (function () {
+    var links = document.querySelectorAll('.rn-toc__item a');
+    if (!links.length) return;
+    links.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (!el) return;
+        links.forEach(function (l) { l.classList.remove('is-active'); });
+        a.classList.add('is-active');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    function setActive(id) {
+      links.forEach(function (a) {
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+      });
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) observer.observe(el);
+    });
+  })();
+</script>
+</body>
+</html>
