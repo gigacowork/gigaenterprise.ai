@@ -57,12 +57,12 @@ LAYOUT ────────────────────────�
 }
 .btn-hero-primary:hover { background: var(--accent-dk); }
 .btn-hero-ghost {
-  padding: 12px 24px; border-radius: 11px; background: none;
-  border: 1px solid var(--border-md); color: var(--text);
+  padding: 12px 24px; border-radius: 11px; background: #171F2D;
+  border: none; color: #fff;
   font-family: var(--font); font-size: 15px; font-weight: 500;
   cursor: pointer; transition: all 0.15s;
 }
-.btn-hero-ghost:hover { border-color: rgba(0,0,0,0.2); }
+.btn-hero-ghost:hover { background: rgba(23,31,45,0.82); }
 .ph-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .ph-visual {
@@ -111,6 +111,8 @@ LAYOUT ────────────────────────�
 .section-head {
   text-align: center; margin-bottom: 48px;
 }
+.section-head--left { text-align: left; }
+.section-head--left .section-sub { margin: 0; }
 .section-overline {
   font-size: 11px; font-family: var(--mono); font-weight: 500;
   letter-spacing: 0.12em; text-transform: uppercase;
@@ -306,6 +308,13 @@ LAYOUT ────────────────────────�
 }
 
 /* ── SECURITY ────────────────────────── */
+
+.swc-more-link {
+  display: inline-block; margin-top: 16px;
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  text-decoration: none; transition: opacity 0.15s;
+}
+.swc-more-link:hover { opacity: 0.7; }
 .security-section {
   padding: 72px 0;
   background: var(--white);
@@ -365,38 +374,6 @@ LAYOUT ────────────────────────�
 .ob-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ── CTA SECTION ─────────────────────── */
-.cta-section { padding: 80px 0; background: var(--bg); }
-.cta-card {
-  background: #0d1117; border-radius: 24px; padding: 56px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
-}
-.cta-left h2 {
-  font-size: 30px; font-weight: 700; line-height: 1.2;
-  font-family: var(--font-display);
-  color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;
-}
-.cta-left p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
-.cta-check { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.cta-check span:first-child { color: var(--accent); font-size: 15px; }
-.cta-check span:last-child { font-size: 13.5px; color: rgba(255,255,255,0.45); }
-.cta-form { display: flex; flex-direction: column; gap: 10px; }
-.cta-input {
-  width: 100%; padding: 12px 16px; border-radius: 10px;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-  color: #fff; font-family: var(--font); font-size: 14px; outline: none;
-  transition: border-color 0.15s;
-}
-.cta-input::placeholder { color: rgba(255,255,255,0.3); }
-.cta-input:focus { border-color: rgba(0,184,107,0.5); }
-.cta-btn {
-  padding: 14px; border-radius: 11px; background: var(--accent); border: none;
-  color: #fff; font-family: var(--font); font-size: 15px; font-weight: 600;
-  cursor: pointer; transition: background 0.15s; margin-top: 4px;
-}
-.cta-btn:hover { background: var(--accent-dk); }
-.cta-legal { font-size: 11.5px; color: rgba(255,255,255,0.25); line-height: 1.5; }
-.cta-legal a { color: rgba(255,255,255,0.35); }
-
 /* ── FOOTER ──────────────────────────── */
 footer {
   background: var(--white); border-top: 1px solid var(--border);
@@ -450,14 +427,25 @@ main { flex: 1; }
   margin-top: 20px;
   align-self: center;
   padding: 10px 20px;
-  border: 1.5px solid var(--accent);
+  background: #171F2D;
+  border: none;
   border-radius: 8px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--accent);
+  color: #fff;
   text-decoration: none;
-  transition: background .15s, color .15s;
+  transition: background .15s;
 }
-.role-scenario-btn:hover { background: var(--accent); color: #fff; }
+.role-scenario-btn:hover { background: rgba(23,31,45,0.82); }
 .role-scenario-btn svg { transition: transform .15s; }
 .role-scenario-btn:hover svg { transform: translateX(3px); }
+
+.security-more-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.security-more-link:hover { text-decoration: underline; }
