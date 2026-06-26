@@ -130,7 +130,7 @@ header {
 .drop-divider { height: 1px; background: var(--border); margin: 4px 0; }
 
 .drop-item {
-  display: flex; align-items: flex-start; gap: 11px;
+  display: flex; align-items: center; gap: 11px;
   padding: 10px 12px; border-radius: 10px; text-decoration: none;
   transition: background 0.12s; cursor: pointer;
 }
@@ -257,7 +257,7 @@ header {
   transition: all 0.12s;
 }
 .deploy-ov-link.deploy-ov-dark { background: var(--text); color: var(--white); border-color: var(--text); }
-.deploy-ov-link.deploy-ov-dark:hover { background: #333; border-color: #333; }
+.deploy-ov-link.deploy-ov-dark:hover { background: #2d3748; border-color: #2d3748; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.22); }
 .deploy-ov-link:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
 .deploy-ov-link.primary {
   background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600;
@@ -303,15 +303,17 @@ header {
    РЕСУРСЫ dropdown  (480px)
 ══════════════════════════════ */
 .resources-drop {
-  width: 580px; right: 0; left: auto;
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  width: 220px; right: 0; left: auto;
+  display: flex; flex-direction: column;
+  padding: 6px;
 }
+.resources-drop .drop-item { padding: 8px 10px; }
 .oneus-drop {
   width: 200px; right: 0; left: auto;
   display: grid; grid-template-columns: 1fr;
 }
-.res-col { padding: 20px 16px; display: flex; flex-direction: column; gap: 2px; }
-.res-col:not(:last-child) { border-right: 1px solid var(--border); }
+.res-col { padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; }
+.res-col:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
 
 /* ══════════════════════════════
    MAIN / SECTIONS BASE
@@ -324,7 +326,7 @@ main { flex: 1; display: block; padding: 0; background: var(--bg); }
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-bottom: 32px;
 }
-.section-header h2 { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1.2; font-family: var(--font-display); }
+.section-header h2 { font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.2; font-family: var(--font-display); }
 .section-header p  { font-size: 14.5px; color: var(--muted); }
 .section-link {
   font-size: 13.5px; font-weight: 600; color: var(--accent-dk);
@@ -649,7 +651,7 @@ main { flex: 1; display: block; padding: 0; background: var(--bg); }
   display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center;
 }
 .security-left { display: flex; flex-direction: column; gap: 14px; }
-.security-left h2 { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1.2; font-family: var(--font-display); }
+.security-left h2 { font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.2; font-family: var(--font-display); }
 .security-left p  { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
 .security-certs {
   display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
@@ -674,7 +676,7 @@ main { flex: 1; display: block; padding: 0; background: var(--bg); }
   display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
 }
 .cta-left { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }
-.cta-left h2 { font-size: 30px; font-weight: 700; color: var(--text); line-height: 1.25; font-family: var(--font-display); }
+.cta-left h2 { font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.25; font-family: var(--font-display); }
 .cta-left p  { font-size: 15px; color: var(--muted); line-height: 1.7; }
 .cta-form { display: flex; flex-direction: column; gap: 10px; }
 .cta-input {
@@ -819,7 +821,7 @@ a.platform-card:hover { border-color: var(--border-md); }
   gap: 72px; align-items: center;
 }
 .expertise-text h2 {
-  font-size: 36px; font-weight: 700; line-height: 1.2;
+  font-size: 32px; font-weight: 700; line-height: 1.2;
   font-family: var(--font-display); color: var(--text);
   margin-bottom: 20px;
 }
@@ -924,7 +926,7 @@ a.platform-card:hover { border-color: var(--border-md); }
   margin-bottom: 36px;
 }
 .deploy-tab-hero h2 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   margin: 0 0 10px;
   color: var(--text);
@@ -988,3 +990,93 @@ a.platform-card:hover { border-color: var(--border-md); }
   .deploy-tab-btn { padding: 8px 14px; font-size: 14px; }
 }
 
+
+
+/* ── Roles Section (block 2 on index) ───────────────────── */
+.roles-section { background: var(--bg); }
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .roles-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .roles-grid { grid-template-columns: 1fr; }
+}
+
+.role-card {
+  background: var(--white);
+  border: 1px solid var(--border-md);
+  border-radius: 14px;
+  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.role-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.role-card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display);
+}
+
+.role-card-sub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.role-card-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.role-card-list li {
+  font-size: 13px;
+  color: var(--text-secondary, #374151);
+  line-height: 1.45;
+  padding-left: 14px;
+  position: relative;
+}
+
+.role-card-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--muted2);
+  font-size: 11px;
+  top: 1px;
+}
+
+a.role-card {
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  cursor: pointer;
+}
+a.role-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  border-color: var(--accent);
+}
+a.role-card .role-card-name { color: var(--text); }

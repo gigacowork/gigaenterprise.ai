@@ -44,9 +44,11 @@
   margin-bottom: 20px;
 }
 .page-hero h1 {
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-family: var(--font-display);
   margin-bottom: 16px;
   color: var(--text);
 }
@@ -74,13 +76,13 @@
   border-top: 1px solid var(--border-md);
 }
 .content-section h2 {
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
   color: var(--text);
 }
 .section-title {
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
   text-align: center;
@@ -207,7 +209,7 @@
 }
 .inline-form-text { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }
 .inline-form-text h2 {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--text);
   line-height: 1.25;
@@ -1150,8 +1152,8 @@
   gap: 16px;
 }
 .tariff-card-accent {
-  border-color: #171F2D;
-  box-shadow: 0 0 0 1px var(--accent);
+  border-color: var(--border);
+  box-shadow: none;
 }
 
 .tariff-card-header {
@@ -1244,8 +1246,8 @@
   margin: 0;
 }
 .connectors-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 8px;
 }
 .connector-card {
@@ -1256,7 +1258,6 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
-  min-width: 180px;
 }
 .connector-card strong {
   font-size: 14px;
