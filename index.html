@@ -126,6 +126,10 @@
     <img src="Logo ГигаЧат Бизнес (темный).svg" alt="ГигаЧат Бизнес" height="32">
   </a>
 
+  <button class="nav-burger" id="navBurger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+
   <ul class="nav-links">
 
     <!-- ── ПРОДУКТ ─────────────────── -->
@@ -180,7 +184,7 @@
 
     <!-- ── СЦЕНАРИИ ──────────────────── -->
     <li>
-      <button class="nav-btn">Сценарии
+      <button class="nav-btn">Для кого
         <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
 
@@ -290,12 +294,13 @@
       </div>
     </li>
 
+
     <!-- ── КЕЙСЫ ─────────────────── -->
     <li>
       <button class="nav-btn" onclick="location.href='pages/keysy.html'">Кейсы</button>
     </li>
 
-    <!-- ── МАТЕРИАЛЫ ─────────────────── -->
+        <!-- ── МАТЕРИАЛЫ ─────────────────── -->
     <li>
       <button class="nav-btn">Центр знаний
         <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -361,8 +366,8 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-content">
-        <h1 class="hero-h1">Делегируйте работу агентам</h1>
-        <p class="hero-sub">Принимайте решения. Поиск информации, анализ данных, подготовку документов и другую рутину выполняют ИИ-агенты.</p>
+        <h1 class="hero-h1">Делегируйте работу<br>ИИ-агентам</h1>
+        <p class="hero-sub">Больше результатов без расширения команды. ИИ-агент получает задачу, собирает данные из ваших систем, анализирует и отдает готовый результат.</p>
         <div class="hero-cta">
           <button class="btn-hero-primary">Попробовать</button>
           <a href="pages/keysy.html" class="btn-hero-ghost">Смотреть кейсы</a>
@@ -402,7 +407,7 @@
   <!-- ── ТРИ КЛЮЧЕВЫХ ПРЕИМУЩЕСТВА ────────────── -->
   <section class="pillars roles-section">
     <div class="section-inner">
-      <h2 class="pillars-heading">Перестаньте делать задачи,<br>которые может выполнить агент</h2>
+      <h2 class="pillars-heading">Перестаньте тратить часы на задачи,<br>которые ИИ может сделать за минуты</h2>
       <div class="roles-grid">
 
         <a class="role-card" href="pages/upravlenie.html">
@@ -514,80 +519,50 @@
   <section class="how-section">
     <div class="section-inner">
       <div class="section-head">
-        <h2 class="section-h2">От задачи до готового результата</h2>
-      </div>
-
-      <div class="how-trigger">
-        <div class="how-trigger-user">
-          <span class="how-trigger-label">Вы</span>
-          <span class="how-trigger-text">«Подготовь КП под конкретного клиента»</span>
-        </div>
-        <div class="how-trigger-agent">
-          <span class="how-trigger-label">Агент</span>
-          <span class="how-trigger-text">«Готов помочь!»</span>
-        </div>
+        <h2 class="section-h2">Как работает ИИ-агент</h2>
       </div>
 
       <div class="how-steps">
         <div class="how-step">
           <div class="step-num">01</div>
-          <div class="step-title">Собирает контекст</div>
-          <div class="step-desc">Собирает данные по клиенту: история взаимодействий, письма, встречи, звонки.</div>
-          <div class="step-tags">
-            <span class="step-tag">CRM</span>
-            <span class="step-tag">Почта</span>
-            <span class="step-tag">Календарь</span>
-            <span class="step-tag">База знаний</span>
+          <div class="how-step-body">
+            <div class="step-title">Получает задачу</div>
+            <div class="step-desc">Вы описываете, что нужно сделать. Агент уточняет детали, если чего-то не хватает.</div>
+            <div class="step-tags">
+              <span class="step-tag">Чат</span>
+              <span class="step-tag">Голос</span>
+              <span class="step-tag">Триггер</span>
+            </div>
           </div>
         </div>
         <div class="how-step">
           <div class="step-num">02</div>
-          <div class="step-title">Формирует картину клиента</div>
-          <div class="step-desc">Сводка по клиенту: задачи, участники, этап сделки, стопперы, риски и возражения.</div>
-          <div class="step-tags">
-            <span class="step-tag">Анализ данных</span>
-            <span class="step-tag">Сводка</span>
+          <div class="how-step-body">
+            <div class="step-title">Собирает и анализирует данные</div>
+            <div class="step-desc">Находит нужную информацию в ваших системах, документах и переписках. Анализирует и структурирует.</div>
+            <div class="step-tags">
+              <span class="step-tag">Документы</span>
+              <span class="step-tag">Почта</span>
+              <span class="step-tag">CRM</span>
+              <span class="step-tag">1С</span>
+            </div>
           </div>
         </div>
         <div class="how-step">
           <div class="step-num">03</div>
-          <div class="step-title">Готовит предложение</div>
-          <div class="step-desc">Формирует гипотезы, ценности и персонализированное коммерческое предложение.</div>
-          <div class="step-tags">
-            <span class="step-tag">Персонализация</span>
-            <span class="step-tag">КП</span>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">04</div>
-          <div class="step-title">Запрашивает подтверждение</div>
-          <div class="step-desc">Вы проверяете информацию и подтверждаете ключевые решения перед отправкой.</div>
-          <div class="step-tags">
-            <span class="step-tag">Контроль</span>
-            <span class="step-tag">Подтверждение</span>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">05</div>
-          <div class="step-title">Завершает задачу</div>
-          <div class="step-desc">Готовит письмо клиенту и фиксирует изменения в CRM.</div>
-          <div class="step-tags">
-            <span class="step-tag">Письмо</span>
-            <span class="step-tag">CRM</span>
+          <div class="how-step-body">
+            <div class="step-title">Отдает готовый результат</div>
+            <div class="step-desc">Документ, сводка, рекомендация или ответ — в том формате, который нужен вам.</div>
+            <div class="step-tags">
+              <span class="step-tag">Отчет</span>
+              <span class="step-tag">Документ</span>
+              <span class="step-tag">Ответ</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="how-compare">
-        <div class="how-compare-col how-compare-without">
-          <div class="how-compare-label">Без GigaCowork</div>
-          <div class="how-compare-text">Ручной сбор информации и подготовка КП из разных источников — от нескольких часов до дня</div>
-        </div>
-        <div class="how-compare-col how-compare-with">
-          <div class="how-compare-label">С GigaCowork</div>
-          <div class="how-compare-text">Персонализированное КП и план действий формируются за минуты на основе полного контекста клиента</div>
-        </div>
-      </div>
+
 
     </div>
   </section>
@@ -799,7 +774,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h6>Сценарии</h6>
+        <h6>Для кого</h6>
         <ul>
           <li><a href="pages/upravlenie.html">Управленческие решения</a></li>
           <li><a href="pages/prodazhi.html">Продажи</a></li>
