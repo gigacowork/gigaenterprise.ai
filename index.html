@@ -366,40 +366,58 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-content">
-        <h1 class="hero-h1">Делегируйте работу<br>ИИ-агентам</h1>
-        <p class="hero-sub">Больше результатов без расширения команды. ИИ-агент получает задачу, собирает данные из ваших систем, анализирует и отдает готовый результат.</p>
-        <div class="hero-cta">
-          <button class="btn-hero-primary">Попробовать</button>
-          <a href="pages/keysy.html" class="btn-hero-ghost">Смотреть кейсы</a>
+        <div id="gcPreSpacer" style="flex-shrink:0"></div>
+        <div class="hero-top" id="heroTop">
+          <h1 class="hero-h1">Делегируйте работу ИИ-агентам</h1>
+          <p class="hero-sub">Больше результатов без расширения команды. ИИ-агент получает задачу, собирает данные из ваших систем, анализирует и отдает готовый результат.</p>
         </div>
-      </div>
-    </div>
-    <div class="hero-stats hero-stats--corner">
-      <div class="hero-stat hero-stat--card">
-        <b>x2</b>
-        <small>быстрее выполнение типовых задач</small>
-      </div>
-      <div class="hero-stat hero-stat--card">
-        <b>−20%</b>
-        <small>потребности в расширении штата</small>
-      </div>
-      <div class="hero-stat hero-stat--card">
-        <b>3 мес.</b>
-        <small>до первых измеримых результатов</small>
+        <div id="gcSpacer" style="flex-shrink:0"></div>
+        <!-- HERO CHAT WIDGET -->
+        <div class="gc-hero" id="gcHero">
+          <div class="gc-chat" id="gcChat"></div>
+          <div class="gc-input-card">
+            <div class="gc-input-text" id="gcInput">
+              <span class="placeholder">Что нужно сделать...</span>
+            </div>
+            <div class="gc-input-footer">
+              <button class="gc-send-btn idle" id="gcSend" aria-label="Отправить">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p class="gc-hint">НЕ ЗНАЕТЕ С ЧЕГО НАЧАТЬ? ПОПРОБУЙТЕ:</p>
+          <div class="gc-chips">
+            <button class="gc-chip" onclick="gcPick(0)"><span class="role">Руководитель</span> Найти решение в переписке</button>
+            <button class="gc-chip" onclick="gcPick(1)"><span class="role">Продажи</span> Карточка в CRM</button>
+            <button class="gc-chip" onclick="gcPick(2)"><span class="role">HR</span> Вопрос сотрудника</button>
+            <button class="gc-chip" onclick="gcPick(3)"><span class="role">Юристы</span> Проверка договора</button>
+            <button class="gc-chip" onclick="gcPick(4)"><span class="role">ИТ</span> Первый тикет</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   
 <!-- ── ЛОГОТИПЫ КЛИЕНТОВ ─────────────────────── -->
-  <section class="logos-strip">
-    <div class="logos-inner">
-      <span class="logos-label">Среди клиентов</span>
-      <div class="logos-row">
-        <div class="logo-pill">ФосАгро</div>
-        <div class="logo-pill">АТБ</div>
-        <div class="logo-pill">Frank Auto</div>
-        <div class="logo-pill">Группа ЦРТ</div>
+
+
+  <!-- ── МЕТРИКИ ─────────────────────────────── -->
+  <section class="metrics-strip">
+    <div class="metrics-inner">
+      <div class="metric-card">
+        <b>x2</b>
+        <small>быстрее выполнение типовых задач</small>
+      </div>
+      <div class="metric-card">
+        <b>−20%</b>
+        <small>потребности в расширении штата</small>
+      </div>
+      <div class="metric-card">
+        <b>3 мес.</b>
+        <small>до первых измеримых результатов</small>
       </div>
     </div>
   </section>
@@ -515,6 +533,29 @@
         </a>
     </div>
   </section>
+
+  <!-- ── КЛИЕНТЫ (MARQUEE) ─────────────────────── -->
+  <section class="logos-marquee-section">
+    <div class="logos-marquee-label">Среди клиентов</div>
+    <div class="logos-marquee-track-wrap">
+      <div class="logos-marquee-track">
+        <img src="assets/images/logo/fosagro-logo-ru--coloured 2.svg" alt="ФосАгро">
+        <img src="assets/images/logo/gazprom-neft-logo-rus 2.svg" alt="Газпром нефть">
+        <img src="assets/images/logo/Magnitogorsk_Iron_and_Steel_Works_logo 2.svg" alt="ММК">
+        <img src="assets/images/logo/640875b6de89a29b0c5473d3_Group2017201 2.svg" alt="Клиент">
+        <img src="assets/images/logo/Group.svg" alt="Клиент">
+        <img src="assets/images/logo/лого.svg" alt="Клиент">
+        <!-- дублируем для бесшовного цикла -->
+        <img src="assets/images/logo/fosagro-logo-ru--coloured 2.svg" alt="ФосАгро">
+        <img src="assets/images/logo/gazprom-neft-logo-rus 2.svg" alt="Газпром нефть">
+        <img src="assets/images/logo/Magnitogorsk_Iron_and_Steel_Works_logo 2.svg" alt="ММК">
+        <img src="assets/images/logo/640875b6de89a29b0c5473d3_Group2017201 2.svg" alt="Клиент">
+        <img src="assets/images/logo/Group.svg" alt="Клиент">
+        <img src="assets/images/logo/лого.svg" alt="Клиент">
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section class="how-section">
     <div class="section-inner">
@@ -842,5 +883,196 @@
   observer.observe(grid);
 })();
 </script>
+
+
+
+  <!-- Hero Chat Script -->
+  <script>
+  var SCENARIOS = [
+    { prompt: 'В почте цепочка на 47 сообщений по запуску нового продукта. Что решили, кто заблокировал и какой следующий шаг?',
+      steps: [
+        { label: 'Читаю переписку', text: '47 сообщений, 6 участников, 8 дней. 2 ключевых решения и 1 точка блокировки' },
+        { label: 'Главное решение', text: 'Запуск сдвинули с 15 на 29 июля. Решение принял Игорь, письмо от 27 июня' },
+        { label: 'Блокер', text: 'Финальное ОК за Андреем (CFO). Ждет расчет unit-экономики. Дедлайн не назван' }
+      ],
+      final: { text: 'Сводка готова. Решение, блокер, следующий шаг.', actions: ['Открыть сводку', 'Написать Андрею', 'Поставить дедлайн'] }
+    },
+    { prompt: 'Только что закончил звонок с клиентом. Запись прикрепил. Вытащи данные и заполни карточку в Битрикс24',
+      steps: [
+        { label: 'Обрабатываю запись', text: 'Клиент: Алексей Морозов, ООО Технопром. ГигаЧат для поддержки, 200 операторов. 28 минут' },
+        { label: 'Квалифицирую сделку', text: 'Бюджет: около 3 млн в год. CTO и CFO принимают совместно. Конкурент на пилоте' },
+        { label: 'Следующий шаг', text: 'КП до пятницы. Повторный звонок через 2 недели. Попросил кейс из банковской отрасли' }
+      ],
+      final: { text: 'Карточка в CRM заполнена. Задача на КП создана.', actions: ['Открыть карточку', 'Напомнить в пятницу', 'Подготовить КП'] }
+    },
+    { prompt: 'Сотрудник спрашивает: могу ли я взять отпуск за свой счет на 10 дней и как это оформить?',
+      steps: [
+        { label: 'Ищу в базе политик', text: 'Раздел 4.2 Отпуск без сохранения зарплаты, ред. 01.03.2025. Соответствует ТК РФ ст. 128' },
+        { label: 'Формирую ответ', text: 'До 14 дней в год. Маршрут: заявление — согласование руководителя — приказ HR. Срок 3 дня' }
+      ],
+      final: { text: 'Ответ с инструкцией и шаблоном заявления готов.', actions: ['Отправить сотруднику', 'Добавить в FAQ', 'Показать шаблон'] }
+    },
+    { prompt: 'Проверь входящий договор поставки на отклонения от нашего стандарта. Оба документа прикрепил',
+      steps: [
+        { label: 'Сравниваю структуру', text: 'Оба договора по 18 разделов. 4 раздела с содержательными отличиями от стандарта' },
+        { label: 'Критичные отклонения', text: 'П.7.3: ответственность — 1 месяц, стандарт 3. П.11.1: нет арбитражной оговорки МКАС' },
+        { label: 'Некритичные', text: '6 стилистических расхождений, юридический смысл не меняется. Можно принять без правок' }
+      ],
+      final: { text: 'Отчет готов. 2 критичных пункта, 6 стилистических.', actions: ['Протокол разногласий', 'Скачать .docx', 'Показать правки'] }
+    },
+    { prompt: 'Новый тикет: сотрудник не может войти в корпоративную почту, пишет что пароль не подходит',
+      steps: [
+        { label: 'Классифицирую', text: 'Аутентификация / сброс пароля. Приоритет: средний. 1 пользователь. Массового инцидента нет' },
+        { label: 'Проверяю базу знаний', text: '91% таких случаев решается через портал самообслуживания за 3 минуты' },
+        { label: 'Готовлю ответ', text: 'Инструкция + ссылка на портал. Если не сработает за 30 мин — автоэскалация L2' }
+      ],
+      final: { text: 'Ответ отправлен. Тикет закроется автоматически при успехе.', actions: ['Посмотреть ответ', 'Эскалировать', 'Настроить автоэскалацию'] }
+    }
+  ];
+
+  var _gcT = null;
+  var GC_AVATAR = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/><circle cx="12" cy="16" r="1" fill="var(--accent)" stroke="none"/></svg>';
+  var GC_ARROW  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>';
+  var GC_CURSOR = '<span class="gc-cursor"></span>';
+
+  function _gcScroll(chat) {
+    setTimeout(function(){ chat.scrollTop = chat.scrollHeight; }, 50);
+  }
+
+  function _gcTyping(chat) {
+    var row = document.createElement('div');
+    row.className = 'gc-msg-agent';
+    row.innerHTML = '<div class="gc-avatar">' + GC_AVATAR + '</div><div class="gc-bubble-step"><div class="gc-typing"><span></span><span></span><span></span></div></div>';
+    chat.appendChild(row);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ row.classList.add('visible'); _gcScroll(chat); }); });
+    return row;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var inputEl = document.getElementById('gcInput');
+    if (inputEl) {
+      inputEl.addEventListener('click', function() {
+        var firstChip = document.querySelector('.gc-chip');
+        if (!firstChip) return;
+        firstChip.classList.remove('gc-chip-flash');
+        void firstChip.offsetWidth; // reflow
+        firstChip.classList.add('gc-chip-flash');
+        setTimeout(function() { firstChip.classList.remove('gc-chip-flash'); }, 1000);
+      });
+    }
+  });
+
+
+  // Hero expand animation
+  function _gcInitHeroPos() {
+    var hc = document.querySelector('.hero-content');
+    var heroTop = document.getElementById('heroTop');
+    var gcChat = document.querySelector('.gc-chat');
+    var preSpacer = document.getElementById('gcPreSpacer');
+    var gcSpacer = document.getElementById('gcSpacer');
+    if (!hc || !heroTop || !gcChat || !preSpacer) return;
+
+    // Hide chat initially (it is empty)
+    gcChat.style.height = '0px';
+    gcChat.style.overflow = 'hidden';
+
+    // Measure free space with compact gc-hero
+    var hcH = hc.getBoundingClientRect().height;
+    var htH = heroTop.getBoundingClientRect().height;
+    var gcHeroH = document.querySelector('.gc-hero').getBoundingClientRect().height;
+    var numItems = hc.children.length;
+    var totalGaps = (numItems - 1) * 22;
+    var freeH = Math.max(0, hcH - htH - gcHeroH - totalGaps);
+    var centerOffset = Math.floor(freeH / 2);
+
+    preSpacer.style.height = centerOffset + 'px';
+    if (gcSpacer) gcSpacer.style.height = '0px';
+
+    window._gcExpandData = { freeH: freeH };
+
+    // Enable transitions after paint settles
+    setTimeout(function() {
+      var dur = '0.75s cubic-bezier(0.4,0,0.2,1)';
+      gcChat.style.transition = 'height ' + dur;
+      preSpacer.style.transition = 'height ' + dur;
+      if (gcSpacer) gcSpacer.style.transition = 'height ' + dur;
+    }, 300);
+  }
+  window.addEventListener('load', _gcInitHeroPos);
+
+  function gcPick(idx) {
+    document.querySelectorAll('.gc-chip').forEach(function(c, i){ c.classList.toggle('active', i === idx); });
+    var heroTop = document.getElementById('heroTop');
+    if (heroTop && !heroTop.dataset.expanded) {
+      heroTop.dataset.expanded = '1';
+      var preSpacer = document.getElementById('gcPreSpacer');
+      var gcSpacer = document.getElementById('gcSpacer');
+      var gcChat = document.querySelector('.gc-chat');
+      if (preSpacer) preSpacer.style.height = '0px';
+      if (gcSpacer && window._gcExpandData) gcSpacer.style.height = window._gcExpandData.freeH + 'px';
+      if (gcChat) gcChat.style.height = '220px';
+    }
+    if (_gcT) { clearTimeout(_gcT); _gcT = null; }
+    var sc   = SCENARIOS[idx];
+    var chat = document.getElementById('gcChat');
+    var inp  = document.getElementById('gcInput');
+    var btn  = document.getElementById('gcSend');
+    chat.innerHTML = '';
+    btn.className  = 'gc-send-btn idle';
+    btn.innerHTML  = GC_ARROW;
+    var charIdx = 0;
+    inp.innerHTML = GC_CURSOR;
+    function type() {
+      if (charIdx < sc.prompt.length) {
+        inp.innerHTML = sc.prompt.slice(0, ++charIdx) + GC_CURSOR;
+        _gcT = setTimeout(type, 16 + Math.random() * 14);
+      } else {
+        inp.innerHTML = sc.prompt;
+        btn.className = 'gc-send-btn ready';
+        btn.innerHTML = GC_ARROW;
+        _gcT = setTimeout(function(){ _gcSend(sc); }, 500);
+      }
+    }
+    type();
+  }
+
+  function _gcSend(sc) {
+    var chat = document.getElementById('gcChat');
+    var inp  = document.getElementById('gcInput');
+    var btn  = document.getElementById('gcSend');
+    btn.className = 'gc-send-btn loading';
+    inp.innerHTML = '<span class="placeholder">Что нужно сделать...</span>';
+    var uEl = document.createElement('div');
+    uEl.className = 'gc-msg-user';
+    uEl.textContent = sc.prompt;
+    chat.appendChild(uEl);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ uEl.classList.add('visible'); _gcScroll(chat); }); });
+    var si = 0, tip = _gcTyping(chat);
+    function step() {
+      tip.remove();
+      if (si < sc.steps.length) {
+        var s = sc.steps[si++];
+        var row = document.createElement('div');
+        row.className = 'gc-msg-agent';
+        row.innerHTML = '<div class="gc-avatar">' + GC_AVATAR + '</div><div class="gc-bubble-step"><div class="gc-bubble-label">' + s.label + '</div><div class="gc-bubble-text">' + s.text + '</div></div>';
+        chat.appendChild(row);
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ row.classList.add('visible'); }); });
+        tip = _gcTyping(chat);
+        _gcT = setTimeout(step, 2000);
+      } else {
+        var f = sc.final;
+        var row = document.createElement('div');
+        row.className = 'gc-msg-agent';
+        var acts = f.actions.map(function(a){ return '<button class="gc-action-btn">' + a + '</button>'; }).join('');
+        row.innerHTML = '<div class="gc-avatar">' + GC_AVATAR + '</div><div class="gc-bubble-final"><div class="gc-bubble-label">Готово</div><div class="gc-bubble-text">' + f.text + '</div><div class="gc-actions">' + acts + '</div></div>';
+        chat.appendChild(row);
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ row.classList.add('visible'); _gcScroll(chat); }); });
+        btn.className = 'gc-send-btn idle';
+        btn.innerHTML = GC_ARROW;
+      }
+    }
+    _gcT = setTimeout(step, 1500);
+  }
+  </script>
 </body>
 </html>
